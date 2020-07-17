@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Leave | Employees</title>
+
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div class="page-container">
+    <div class="nav-bar-container">
+        <div id="nav" class="nav-bar">
+            <ul>
+                <li><a th:href="@{/admin/home}">Home</a></li>
+                <li><a th:href="@{/admin/employees}" class="active">Employee</a></li>
+                <li><a th:href="@{/admin/requests}">Request</a></li>
+                <li><a href="#">More Action</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="header align-content">
+            <h2>Leave Manager System</h2>
+            <div class="profile">
+                <img onclick="openProfile()" th:src="@{/img/profile.png}" alt="@@">
+                <span sec:authentication="name">@@</span>
+                <div class="dropdown-profile">
+                    <form class="form">
+                        <button type="submit">Detail</button>
+                        <button type="submit">Detail</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="nav-state" class="nav-state align-content ">
+            <a th:href="@{home}">Home</a>
+            <span>&rarr;</span>
+            <a class="active" th:href="@{employees}">Employee</a>
+        </div>
+
+        <div class="main-content align-content">
+            <div class="header-table">
+                <h3>Employees Manager</h3>
+                <button type="button" class="btn" th:onclick="openModalBox()">Add Employee</button>
+            </div>
+            <div class="table-container">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>On Work</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <th:block th:each="employee : ${employees}">
+                        <tr>
+                            <td th:text="${employee.getName()}">Name</td>
+                            <td th:text="${employee.getEmail()}">email</td>
+                            <td th:text="${employee.isOnWork()}">ON WORK</td>
+                            <td>@@</td>
+                        </tr>
+                    </th:block>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="modal-box" class="modal-box">
+                <div class="modal-box-content">
+                    <span id="close-modal" class="close-modal" onclick="closeModalBox()">&times;</span>
+                    <form class="form" action="#" th:action="@{/admin/employee}" th:object="${addEmployeeForm}"
+                          method="post">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" th:field="*{inputName}" placeholder="Employee's name.."
+                               required>
+
+                        <label for="email">Email</label>
+                        <input type="text" id="email" name="email" th:field="*{inputEmail}"
+                               placeholder="Employee's email.."
+                               required>
+
+                        <label for="managers">Managers</label>
+
+                        <div id="managers" class="dropdown">
+                            <label id="dropdown-label" class="dropdown-label" onclick="getDropDown()">Select
+                                Managers</label>
+
+                            <div id="dropdown-list" class="dropdown-list">
+
+                                <div class="checkbox" onclick="updateDropDownValue()" th:each="manager : ${employees}">
+                                    <input type="checkbox" name="dropdown-group" class="checkbox-item"
+                                           id="${manager}" th:value="${manager.id}" th:id="${manager.id}"
+                                           th:field="*{selectManagers}"/>
+                                    <label for="${manager}" th:for="${manager.id}" class="checkbox-custom-label"
+                                           th:text="${manager.name}"></label>
+                                </div>
+                            </div>
+
+                            <input type="submit" value="Submit" class="btn">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer align-content">
+            &copy; Copyright by Hulk
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/js/script.js}" type="application/javascript" rel="script"></script>
+
+</body>
+</html>

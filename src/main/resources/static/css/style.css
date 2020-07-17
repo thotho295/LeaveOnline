@@ -1,0 +1,279 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: lightgray;
+    overflow-y: auto;
+}
+
+h1, h2, h3, h4 {
+    color: lightskyblue;
+}
+
+.page-container {
+    height: 100%;
+    width: 100%;
+}
+
+.main-container {
+    width: 82%;
+    margin: 0 auto;
+    float: right;
+    padding: 10px 20px;
+}
+
+.nav-bar-container {
+    width: 17%;
+    height: 98%;
+    margin: 0 auto;
+    position: fixed;
+    background-color: black;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.6);
+}
+
+.nav-bar {
+    height: 100%;
+    width: 100%;
+}
+
+.nav-bar ul {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: auto;
+}
+
+.nav-bar li a {
+    display: block;
+    padding: 8px 25px;
+    color: white;
+    text-decoration: none;
+}
+
+.nav-bar li a:hover {
+    color: lightgray;
+    background-color: darkgray;
+}
+
+.nav-bar li a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.main-container .header {
+    display: flex;
+    justify-content: space-around;
+}
+
+.nav-state a {
+    text-decoration: none;
+}
+
+.nav-state a.active {
+    color: red;
+}
+
+.align-content {
+    background-color: white;
+    margin-bottom: 15px;
+    padding: 10px 20px;
+}
+
+.main-container .header h2 {
+    flex: 1;
+}
+
+.main-content .header-table {
+    display: flex;
+    justify-content: space-around;
+}
+
+.main-content .header-table h3 {
+    flex: 1;
+}
+
+.footer {
+    text-align: center;
+}
+
+.main-container .header .profile {
+    max-width: 40%;
+    display: flex;
+    color: blue;
+    align-items: center;
+    position: relative;
+}
+
+.main-container .header .profile .dropdown-profile {
+    display: none;
+    padding: 15px;
+    top: 65px;
+    left: 15px;
+    background-color: #D5F7F6;
+    position: absolute;
+    z-index: 1;
+    min-width: 70%;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);
+}
+
+.main-container .header .profile .dropdown-profile a {
+    display: block;
+    text-decoration: none;
+    color: black;
+    padding: 3px;
+}
+
+.main-container .header .profile img {
+    max-height: 60px;
+    margin: 0px 10px;
+    cursor: pointer;
+}
+
+.btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 1px 10px;
+    margin: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: darkgreen;
+}
+
+
+.table-container {
+    max-height: 450px;
+    overflow: auto;
+}
+
+.table {
+    width: 100%;
+    border: 1px solid red;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.table tr:nth-child(odd) {
+    background-color: lightblue;
+}
+
+.table tr:hover {
+    background-color: lightcoral;
+}
+
+.table th {
+    color: white;
+    background-color: red;
+
+    position: sticky;
+    top: 0;
+}
+
+.table th, td {
+    padding: 10px 20px;
+    margin: 0;
+}
+
+
+.modal-box {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    /*visibility: hidden;*/
+}
+
+.modal-box-content {
+    background-color: lightcoral;
+    margin: 5% auto;
+    padding: 20px;
+    border: none;
+    border-radius: 6px;
+    width: 80%;
+}
+
+.close-modal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.form {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    margin: 0;
+    width: 100%;
+}
+
+.form input[type=text], input[type=email], input[type=password], input[type=submit], input[type=date], textarea {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.form input[type=submit] {
+    width: 100%;
+}
+
+.form .dropdown .dropdown-label {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: "Comic Sans MS", serif ;
+    font-weight: lighter;
+}
+
+.form .dropdown .dropdown-label:hover {
+    background-color: lightblue;
+    cursor: pointer;
+}
+
+.form .dropdown .dropdown-list {
+    display: none;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.form .dropdown .dropdown-list .checkbox {
+    display: block;
+    margin: 5px 0;
+}
+
+.form .dropdown .dropdown-list .checkbox .checkbox-item {
+    opacity: 0.7;
+}
+
+
+

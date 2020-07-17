@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Leave | Approves</title>
+
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div class="page-container">
+    <div class="nav-bar-container">
+        <div id="nav" class="nav-bar">
+            <ul>
+                <li><a th:href="@{/employee/home}">Home</a></li>
+                <li><a th:href="@{/employee/approves}" class="active">Approve</a></li>
+                <li><a href="#">More Action</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-container">
+
+        <div class="header align-content">
+            <h2>Leave Manager System</h2>
+            <div class="profile">
+                <img th:src="@{/img/profile.png}" alt="@@">
+                <span sec:authentication="name">@@</span>
+            </div>
+        </div>
+
+        <div id="nav-state" class="nav-state align-content ">
+            <a th:href="@{home}">Home</a>
+            <span>&rarr;</span>
+            <a class="active" th:href="@{approves}">Approves</a>
+        </div>
+
+        <div class="main-content align-content">
+            <div class="header-table">
+                <h3>Requests</h3>
+            </div>
+            <div class="table-container">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Start</th>
+                        <th>End</th>
+                        <th>Day off</th>
+                        <th>Reason</th>
+                        <th>Status</th>
+                        <th>Approvers</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <th:block th:each="request : ${requests}">
+                        <tr>
+                            <td th:text="${request.employee.name}">Hulk</td>
+                            <td th:text="${request.start}">18 - 07 - 2020</td>
+                            <td th:text="${request.end}">20 - 07 - -2020</td>
+                            <td>Day off</td>
+                            <td th:text="${request.reason}">Just for fun</td>
+                            <td th:text="${request.status}">Pending</td>
+                            <td>
+                                <select>
+                                    <option th:each="approver : ${request.approvers}" th:text="${approver.name}">Boss
+                                    </option>
+                                </select>
+                            </td>
+                            <td>
+                                <button>Accept</button>
+                                <button>Reject</button>
+                            </td>
+                        </tr>
+                    </th:block>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="footer align-content">
+            &copy; Copyright by Hulk
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/js/script.js}" type="application/javascript" rel="script"></script>
+
+</body>
+</html>
