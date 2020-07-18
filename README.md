@@ -17,16 +17,16 @@ git clone https://github.com/Puskin2911/LeaveOnline
 
 Use must be login first
 
-![Login](https://github.com/Puskin2911/LeaveOnline/blob/master/guide/login.png)
+![Login](https://github.com/Puskin2911/LeaveOnline/blob/master/guide/login.PNG)
 
 
 Admin home page
 
-![Admin](https://github.com/Puskin2911/LeaveOnline/blob/master/guide/admin_home.png)
+![Admin](https://github.com/Puskin2911/LeaveOnline/blob/master/guide/admin_home.PNG)
 
 Here is employee management.
 
-![Admin](https://github.com/Puskin2911/LeaveOnline/blob/master/guide/admin_employee.png)
+![Admin](https://github.com/Puskin2911/LeaveOnline/blob/master/guide/admin_employee.PNG)
 
 And more and more..... A'm sorry, Go ahead and use @@!
 
