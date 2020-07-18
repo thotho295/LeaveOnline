@@ -1,11 +1,11 @@
-function openModalBox() {
-    const modal = document.getElementById("modal-box");
+function openModalBox(id) {
+    const modal = document.getElementById(id);
     if (modal != null)
         modal.style.display = "block";
 }
 
-function closeModalBox() {
-    const modal = document.getElementById("modal-box");
+function closeModalBox(id) {
+    const modal = document.getElementById(id);
 
     modal.style.display = "none";
 }
@@ -24,7 +24,7 @@ function getDropDown() {
     }
 }
 
-function findLableForControl(el) {
+function findLabelForControl(el) {
     const idVal = el.id;
     let labels = document.getElementsByTagName('label');
     for (let i = 0; i < labels.length; i++) {
@@ -44,7 +44,7 @@ function updateDropDownValue() {
     for (checkbox of checkboxes) {
         if (checkbox.checked) {
             console.log("checkbox id" + checkbox.id);
-            const label = findLableForControl(checkbox);
+            const label = findLabelForControl(checkbox);
             if (dropDownLabel.innerHTML === '') {
                 dropDownLabel.innerHTML += label.textContent;
             } else {

@@ -9,4 +9,5 @@ import java.util.List;
 public interface RequestRepository extends JpaRepository<LeaveRequest, Integer> {
     List<LeaveRequest> findAllByEmployee(Employee employee);
 
+    LeaveRequest findOneById(int id);
 }

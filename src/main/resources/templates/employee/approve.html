@@ -25,8 +25,13 @@
         <div class="header align-content">
             <h2>Leave Manager System</h2>
             <div class="profile">
-                <img th:src="@{/img/profile.png}" alt="@@">
+                <img onclick="openProfile()" th:src="@{/img/profile.png}" alt="@@" src="#">
                 <span sec:authentication="name">@@</span>
+                <div id="dropdown-profile" class="dropdown-profile">
+                    <a href="#">Profile</a>
+                    <a href="#">Change Password</a>
+                    <a href="#" th:href="@{/logout}">Logout</a>
+                </div>
             </div>
         </div>
 
@@ -64,17 +69,42 @@
                             <td th:text="${request.reason}">Just for fun</td>
                             <td th:text="${request.status}">Pending</td>
                             <td>
-                                <select>
+                                <select class="btn btn-info">
                                     <option th:each="approver : ${request.approvers}" th:text="${approver.name}">Boss
                                     </option>
                                 </select>
                             </td>
                             <td>
-                                <button>Accept</button>
-                                <button>Reject</button>
+                                <button th:data-accept=" |accept${request.id}|" type="button" class="btn" onclick="openModalBox(this.getAttribute('data-accept'))">Accept</button>
+                                <button th:data-reject="|reject${request.id}|" type="button" class="btn btn-danger" onclick="openModalBox(this.getAttribute('data-reject'))">Reject</button>
+                                <div th:id="'accept' + ${request.id}" class="modal-box">
+                                    <div class="modal-box-content modal-box-content-confirm">
+                                        <form class="form" th:action="@{/employee/request/update}" method="get">
+                                            <input type="hidden" th:value="${request.id}" name="request_id">
+                                            <label> Are your sure accept this request?</label>
+                                            <div class="selection">
+                                                <button name="status" value="ACCEPTED" type="submit" class="btn btn-danger">Accept</button>
+                                                <button th:data-accept=" |accept${request.id}|" type="button" class="btn btn-normal" onclick="closeModalBox(this.getAttribute('data-accept'))">Cancel</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div th:id="'reject' + ${request.id}" class="modal-box">
+                                    <div class="modal-box-content modal-box-content-confirm">
+                                        <form class="form" th:action="@{/employee/request/update}" method="get">
+                                            <input type="hidden" th:value="${request.id}" name="request_id">
+                                            <label> Are your sure accept this request?</label>
+                                            <div class="selection">
+                                                <button name="status" value="REJECTED" type="submit" class="btn btn-danger">Rejects</button>
+                                                <button th:data-accept=" |reject${request.id}|" type="button" class="btn btn-normal" onclick="closeModalBox(this.getAttribute('data-accept'))">Cancel</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     </th:block>
+
                     </tbody>
                 </table>
             </div>
@@ -83,6 +113,10 @@
         <div class="footer align-content">
             &copy; Copyright by Hulk
         </div>
+
+<!--        Modal box here-->
+
+
     </div>
 </div>
 

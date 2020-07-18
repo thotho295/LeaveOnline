@@ -36,10 +36,10 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public List<EmployeeDTO> getAllManagers(String email) {
         Employee employee = employeeRepository.findOneByEmail(email);
-        Set<Employee> employees = employee.getManagers();
+        Set<dev.hulk.leave.entity.Employee> employees = employee.getManagers();
         List<EmployeeDTO> employeesDTO = new ArrayList<>();
 
-        for (Employee item : employees) {
+        for (dev.hulk.leave.entity.Employee item : employees) {
             employeesDTO.add(employeeConverter.toDTO(item));
         }
 
@@ -48,10 +48,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public List<EmployeeDTO> getAll() {
-        List<Employee> employees = employeeRepository.findAll();
+        List<dev.hulk.leave.entity.Employee> employees = employeeRepository.findAll();
         List<EmployeeDTO> employeesDTO = new ArrayList<>();
 
-        for (Employee employee : employees) {
+        for (dev.hulk.leave.entity.Employee employee : employees) {
             employeesDTO.add(employeeConverter.toDTO(employee));
         }
 
@@ -60,19 +60,19 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void save(EmployeeDTO dto) {
-        Employee employee = employeeConverter.toEntity(dto);
+        dev.hulk.leave.entity.Employee employee = employeeConverter.toEntity(dto);
 
         employeeRepository.save(employee);
     }
 
     @Override
     public void save(AddEmployeeForm form) {
-        Employee employee = new Employee();
+        dev.hulk.leave.entity.Employee employee = new dev.hulk.leave.entity.Employee();
 
         int[] ids = form.getSelectManagers();
 
         if(ids != null){
-            Set<Employee> managers = new HashSet<>();
+            Set<dev.hulk.leave.entity.Employee> managers = new HashSet<>();
             for (int id : ids) {
                 managers.add(employeeRepository.findOneById(id));
             }
@@ -89,7 +89,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee getByEmail(String email) {
+    public dev.hulk.leave.entity.Employee getByEmail(String email) {
         return employeeRepository.findOneByEmail(email);
     }
 }

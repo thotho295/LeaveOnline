@@ -25,12 +25,12 @@
         <div class="header align-content">
             <h2>Leave Manager System</h2>
             <div class="profile">
-                <img onclick="openProfile()" th:src="@{/img/profile.png}" alt="@@">
+                <img onclick="openProfile()" th:src="@{/img/profile.png}" alt="@@" src="#">
                 <span sec:authentication="name">@@</span>
                 <div id="dropdown-profile" class="dropdown-profile">
-                    <a href="#">Link 1</a>
-                    <a href="#">Link 2</a>
-                    <a href="#">Link 3</a>
+                    <a href="#">Profile</a>
+                    <a href="#">Change Password</a>
+                    <a href="#" th:href="@{/logout}">Logout</a>
                 </div>
             </div>
         </div>
@@ -42,7 +42,7 @@
         <div class="main-content align-content">
             <div class="header-table">
                 <h3>Your Requests</h3>
-                <button type="button" class="btn" th:onclick="openModalBox()">New Request</button>
+                <button type="button" class="btn" th:onclick="|openModalBox('new-request')|">New Request</button>
             </div>
             <div class="table-container">
                 <table class="table">
@@ -72,15 +72,28 @@
                                     </th:block>
                                 </select>
                             </td>
-                            <td>Action</td>
+                            <td>
+                                <button th:data-delete="|delete${request.id}|" type="button" class="btn btn-danger" onclick="openModalBox(this.getAttribute('data-delete'))">Cancel</button>
+                                <div th:id="|delete${request.id}|" class="modal-box">
+                                    <div class="modal-box-content modal-box-content-confirm">
+                                        <form class="form" th:action="@{/employee/request/delete}" method="post">
+                                            <input type="hidden" th:value="${request.id}" name="request_id">
+                                            <label> Are your sure delete your request?</label>
+                                            <div class="selection">
+                                                <button type="submit" class="btn btn-danger">Confirm Delete</button>
+                                                <button th:data-delete="|delete${request.id}|" type="button" class="btn btn-normal" onclick="closeModalBox(this.getAttribute('data-delete'))">Cancel Request</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </td>
                         </tr>
                     </th:block>
-                    </tr>
                     </tbody>
                 </table>
-                <div id="modal-box" class="modal-box">
+                <div id="new-request" class="modal-box">
                     <div class="modal-box-content">
-                        <span id="close-modal" class="close-modal" onclick="closeModalBox()">&times;</span>
+                        <span class="close-modal" onclick="closeModalBox('new-request')">&times;</span>
                         <form class="form" action="#" th:action="@{/employee/request}" th:object="${requestForm}"
                               method="post">
                             <label for="start">Start Time</label>

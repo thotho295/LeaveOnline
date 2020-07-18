@@ -1,9 +1,7 @@
 package dev.hulk.leave.service;
 
 import dev.hulk.leave.dto.EmployeeDTO;
-import dev.hulk.leave.entity.Employee;
 import dev.hulk.leave.form.AddEmployeeForm;
-import dev.hulk.leave.form.RequestForm;
 
 import java.util.List;
 
@@ -16,5 +14,5 @@ public interface EmployeeService {
 
     void save(AddEmployeeForm form);
 
-    Employee getByEmail(String email);
+    dev.hulk.leave.entity.Employee getByEmail(String email);
 }

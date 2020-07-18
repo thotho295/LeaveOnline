@@ -8,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 
@@ -28,6 +26,11 @@ public class EmployeeController {
     @Autowired
     public void setRequestService(RequestService requestService) {
         this.requestService = requestService;
+    }
+
+    @GetMapping(value = "/employee")
+    public String requests(){
+        return "redirect:/employee/home";
     }
 
     @GetMapping(value = "/employee/home")
@@ -56,11 +59,27 @@ public class EmployeeController {
         return "redirect:/employee/home";
     }
 
+    @GetMapping(value = "/employee/request/update")
+    public String acceptRequest(@RequestParam(name = "request_id") int id, @RequestParam(name = "status") String status){
+
+        requestService.updateStatus(id, status);
+
+        return "redirect:/employee/approves";
+    }
+
+    @PostMapping(value = "/employee/request/delete")
+    public String request(@RequestParam(name = "request_id") int id){
+
+        requestService.delete(id);
+
+        return "redirect:/employee/home";
+    }
+
     @GetMapping(value = "/employee/approves")
     public String approves(Model model, Principal principal) {
 
         String email = principal.getName();
-        model.addAttribute("requests", requestService.getAllByApproverEmail(email));
+        model.addAttribute("requests", requestService.getAllPendingByApproverEmail(email));
 
         return "employee/approve";
     }

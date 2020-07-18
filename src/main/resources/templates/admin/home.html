@@ -25,8 +25,13 @@
         <div class="header align-content">
             <h2>Leave Manager System</h2>
             <div class="profile">
-                <img th:src="@{/img/profile.png}" alt="@@">
+                <img onclick="openProfile()" th:src="@{/img/profile.png}" alt="@@" src="#">
                 <span sec:authentication="name">@@</span>
+                <div id="dropdown-profile" class="dropdown-profile">
+                    <a href="#">Profile</a>
+                    <a href="#">Change Password</a>
+                    <a href="#" th:href="@{/logout}">Logout</a>
+                </div>
             </div>
         </div>
 
@@ -36,13 +41,12 @@
 
         <div class="main-content align-content">
             <div class="header-table">
-                <h3>Employees Manager</h3>
-                <button type="button" class="btn" th:onclick="openModalBox()">Add Employee</button>
+                <h3>Leave Manager</h3>
+                <button type="button" class="btn">Some Action</button>
             </div>
-            <div class="table-container">
-                <table class="table">
 
-                </table>
+            <div class="table-container">
+                <h4>No more data here. I will update analysis data after.</h4>
             </div>
         </div>
 

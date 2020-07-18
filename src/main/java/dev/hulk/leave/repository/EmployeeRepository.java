@@ -1,6 +1,5 @@
 package dev.hulk.leave.repository;
 
-import dev.hulk.leave.dto.EmployeeDTO;
 import dev.hulk.leave.entity.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 

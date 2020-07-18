@@ -14,4 +14,10 @@ public interface RequestService {
     void save(RequestForm form, String email);
 
     List<LeaveRequest> getAllByApproverEmail(String email);
+
+    void delete(int id);
+
+    void updateStatus(int id, String status);
+
+    List<LeaveRequest> getAllPendingByApproverEmail(String email);
 }

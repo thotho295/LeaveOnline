@@ -15,18 +15,11 @@ public class EmployeeDTO {
     private String email;
     private boolean onWork;
     private String password;
-    private Set<EmployeeDTO> managers;
+    private Set<Employee> managers;
+    private Set<Employee> employees;
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public Set<EmployeeDTO> getManagers() {
-        return managers;
-    }
-
-    public void setManagers(Set<EmployeeDTO> managers) {
-        this.managers = managers;
     }
 
     public void setPassword(String password) {
@@ -59,6 +52,22 @@ public class EmployeeDTO {
 
     public void setOnWork(boolean onWork) {
         this.onWork = onWork;
+    }
+
+    public Set<Employee> getManagers() {
+        return managers;
+    }
+
+    public void setManagers(Set<Employee> managers) {
+        this.managers = managers;
+    }
+
+    public Set<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(Set<Employee> employees) {
+        this.employees = employees;
     }
 
     @Override

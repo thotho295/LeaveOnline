@@ -79,4 +79,34 @@ public class RequestServiceImpl implements RequestService {
 
         return results;
     }
+
+    @Override
+    public void delete(int id) {
+        requestRepository.deleteById(id);
+    }
+
+    @Override
+    public void updateStatus(int id, String status) {
+        LeaveRequest request = requestRepository.findOneById(id);
+
+        request.setStatus(status);
+
+        requestRepository.save(request);
+    }
+
+    @Override
+    public List<LeaveRequest> getAllPendingByApproverEmail(String email) {
+        List<LeaveRequest> requests = requestRepository.findAll();
+
+        List<LeaveRequest> results = new ArrayList<>();
+
+        for(LeaveRequest request : requests){
+            Employee employee = employeeRepository.findOneByEmail(email);
+            if(request.getStatus().equals("PENDING") && request.getApprovers().contains(employee)){
+                results.add(request);
+            }
+        }
+
+        return results;
+    }
 }

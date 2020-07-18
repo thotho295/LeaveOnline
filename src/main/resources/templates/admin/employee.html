@@ -24,13 +24,12 @@
         <div class="header align-content">
             <h2>Leave Manager System</h2>
             <div class="profile">
-                <img onclick="openProfile()" th:src="@{/img/profile.png}" alt="@@">
+                <img onclick="openProfile()" th:src="@{/img/profile.png}" alt="@@" src="#">
                 <span sec:authentication="name">@@</span>
-                <div class="dropdown-profile">
-                    <form class="form">
-                        <button type="submit">Detail</button>
-                        <button type="submit">Detail</button>
-                    </form>
+                <div id="dropdown-profile" class="dropdown-profile">
+                    <a href="#">Profile</a>
+                    <a href="#">Change Password</a>
+                    <a href="#" th:href="@{/logout}">Logout</a>
                 </div>
             </div>
         </div>
@@ -44,7 +43,7 @@
         <div class="main-content align-content">
             <div class="header-table">
                 <h3>Employees Manager</h3>
-                <button type="button" class="btn" th:onclick="openModalBox()">Add Employee</button>
+                <button type="button" class="btn" onclick="openModalBox('add-employee')">Add Employee</button>
             </div>
             <div class="table-container">
                 <table class="table">
@@ -53,25 +52,45 @@
                         <th>Name</th>
                         <th>Email</th>
                         <th>On Work</th>
+                        <th>Managers For</th>
+                        <th>Manager By</th>
                         <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
                     <th:block th:each="employee : ${employees}">
                         <tr>
-                            <td th:text="${employee.getName()}">Name</td>
-                            <td th:text="${employee.getEmail()}">email</td>
-                            <td th:text="${employee.isOnWork()}">ON WORK</td>
-                            <td>@@</td>
+                            <td th:text="${employee.name}">Name</td>
+                            <td th:text="${employee.email}">email</td>
+                            <td th:text="${employee.onWork}">ON WORK</td>
+                            <td>
+                                <select>
+                                    <option th:each="managerFor : ${employee.employees}"
+                                            th:text="${managerFor.name}"></option>
+                                </select>
+                            </td>
+                            <td>
+                                <select>
+                                    <option th:each="managerBy : ${employee.managers}"
+                                            th:text="${managerBy.name}"></option>
+                                </select>
+                            </td>
+                            <td>
+                                <div>
+                                    <img src="#" th:src="@{/img/detail.png}" alt="@@">
+                                    <img src="#" th:src="@{/img/edit.png}" alt="@@">
+                                    <img src="#" th:src="@{/img/delete.jpg}" alt="@@">
+                                </div>
+                            </td>
                         </tr>
                     </th:block>
                     </tbody>
                 </table>
             </div>
 
-            <div id="modal-box" class="modal-box">
+            <div id="add-employee" class="modal-box">
                 <div class="modal-box-content">
-                    <span id="close-modal" class="close-modal" onclick="closeModalBox()">&times;</span>
+                    <span class="close-modal" onclick="closeModalBox('add-employee')">&times;</span>
                     <form class="form" action="#" th:action="@{/admin/employee}" th:object="${addEmployeeForm}"
                           method="post">
                         <label for="name">Name</label>
