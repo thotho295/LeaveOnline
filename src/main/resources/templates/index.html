@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Leave</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+</head>
+<body style="background: white; text-align: center">
+<h1>Hello Every LinxHQ's Employee</h1>
+
+<div sec:authorize="isAnonymous()">
+    <h2>Go to <a style="color: red" th:href="@{/login}">Login</a> now @@</h2>
+</div>
+
+<div th:each="authority : ${#authentication.getAuthorities()}"
+     th:if="${authority.getAuthority().startsWith('ROLE_USER')}">
+    <h2>Go to <a style="color: red" th:href="@{/employee}">Dashboard</a> now!</h2>
+    <h3>Or <a style="color: red" th:href="@{/logout}">Logout@@</a></h3>
+</div>
+
+<div th:each="authority : ${#authentication.getAuthorities()}"
+     th:if="${authority.getAuthority().startsWith('ROLE_ADMIN')}">
+    <h2>Go to <a style="color: red" th:href="@{/admin}">Dashboard</a> now!</h2>
+    <h3>Or <a style="color: red" th:href="@{/logout}">Logout@@</a></h3>
+</div>
+
+</body>
+</html>

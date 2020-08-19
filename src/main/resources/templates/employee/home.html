@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Leave | Home</title>
+
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div class="page-container">
+    <div class="nav-bar-container">
+        <div id="nav" class="nav-bar">
+            <ul>
+                <li><a th:href="@{/employee/home}" class="active">Home</a></li>
+                <li><a th:href="@{/employee/approves}">Approve</a></li>
+                <li><a href="#">More Action</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-container">
+
+        <div class="header align-content">
+            <h2>Leave Manager System</h2>
+            <div class="profile">
+                <img onclick="openProfile()" th:src="@{/img/profile.png}" alt="@@" src="#">
+                <span sec:authentication="name">@@</span>
+                <div id="dropdown-profile" class="dropdown-profile">
+                    <a href="#">Profile</a>
+                    <a href="#">Change Password</a>
+                    <a href="#" th:href="@{/logout}">Logout</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="nav-state" class="nav-state align-content ">
+            <a th:href="@{home}">Home</a>
+        </div>
+
+        <div class="main-content align-content">
+            <div class="header-table">
+                <h3>Your Requests</h3>
+                <button type="button" class="btn" th:onclick="|openModalBox('new-request')|">New Request</button>
+            </div>
+            <div class="table-container">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Start</th>
+                        <th>End</th>
+                        <th>Day off</th>
+                        <th>Reason</th>
+                        <th>Status</th>
+                        <th>Approvers</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <th:block th:each="request : ${requests}">
+                        <tr>
+                            <td th:text="${request.start}"></td>
+                            <td th:text="${request.end}"></td>
+                            <td>@@</td>
+                            <td th:text="${request.reason}">Just for fun</td>
+                            <td th:text="${request.status}"></td>
+                            <td>
+                                <select>
+                                    <th:block th:each="approver : ${request.approvers}">
+                                        <option th:text="${approver.name}">Boss</option>
+                                    </th:block>
+                                </select>
+                            </td>
+                            <td>
+                                <button th:data-delete="|delete${request.id}|" type="button" class="btn btn-danger" onclick="openModalBox(this.getAttribute('data-delete'))">Cancel</button>
+                                <div th:id="|delete${request.id}|" class="modal-box">
+                                    <div class="modal-box-content modal-box-content-confirm">
+                                        <form class="form" th:action="@{/employee/request/delete}" method="post">
+                                            <input type="hidden" th:value="${request.id}" name="request_id">
+                                            <label> Are your sure delete your request?</label>
+                                            <div class="selection">
+                                                <button type="submit" class="btn btn-danger">Confirm Delete</button>
+                                                <button th:data-delete="|delete${request.id}|" type="button" class="btn btn-normal" onclick="closeModalBox(this.getAttribute('data-delete'))">Cancel Request</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </th:block>
+                    </tbody>
+                </table>
+                <div id="new-request" class="modal-box">
+                    <div class="modal-box-content">
+                        <span class="close-modal" onclick="closeModalBox('new-request')">&times;</span>
+                        <form class="form" action="#" th:action="@{/employee/request}" th:object="${requestForm}"
+                              method="post">
+                            <label for="start">Start Time</label>
+                            <input type="date" id="start" name="start" title="Start time" th:field="*{startDateTime}"
+                                   required>
+                            <label for="end">End Time</label>
+                            <input type="date" id="end" name="end" title="End time"
+                                   required th:field="*{endDateTime}">
+                            <label for="reason">Reason for Request</label>
+                            <textarea id="reason" name="reason" rows="5" th:field="*{reasonTextArea}"> </textarea>
+
+                            <label for="managers">Approvers</label>
+
+                            <div id="managers" class="dropdown">
+                                <label id="dropdown-label" class="dropdown-label" onclick="getDropDown()">Select
+                                    Approvers</label>
+
+                                <div id="dropdown-list" class="dropdown-list">
+
+                                    <div class="checkbox" onclick="updateDropDownValue()"
+                                         th:each="manager : ${currentUser.managers}">
+                                        <input type="checkbox" name="dropdown-group" class="checkbox-item"
+                                               id="checkbox-custom" th:field="*{selectApprovers}"
+                                               th:value="${manager.id}"/>
+                                        <label for="checkbox-custom"
+                                               class="checkbox-custom-label" th:text="${manager.name}"></label>
+                                    </div>
+                                </div>
+
+                                <input type="submit" value="Submit" class="btn">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer align-content">
+            &copy; Copyright by Hulk
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/js/script.js}" type="application/javascript" rel="script"></script>
+
+</body>
+</html>
