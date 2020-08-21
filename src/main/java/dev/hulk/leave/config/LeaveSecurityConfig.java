@@ -52,8 +52,8 @@ public class LeaveSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .formLogin()
 //                .permitAll();
         http.authorizeRequests()
-                .antMatchers("/admin/**")
-                .hasRole("ADMIN")
+//                .antMatchers("/admin/**")
+//                .hasRole("ADMIN")
                 .antMatchers("/employee/**")
                 .hasRole("USER")
                 .antMatchers("/**")
