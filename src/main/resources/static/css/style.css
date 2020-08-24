@@ -266,7 +266,7 @@ h1, h2, h3, h4 {
     width: 100%;
 }
 
-.form input[type=text], input[type=email], input[type=password], input[type=submit], input[type=date], textarea {
+.form select, input[type=text], input[type=email], input[type=password], input[type=submit], input[type=date], textarea {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -318,3 +318,90 @@ h1, h2, h3, h4 {
     padding: 5px;
     appearance: none;
 }
+
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.row {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex: 1 0 100%;
+    flex-wrap: wrap;
+    margin-top: calc(var(--bs-gutter-y) * -1);
+    margin-right: calc(var(--bs-gutter-x) / -2);
+    margin-left: calc(var(--bs-gutter-x) / -2);
+}
+.col {
+    flex: 1 0 0;
+}
+
+.col-auto {
+    flex: 0 0 auto;
+    width: auto;
+}
+
+.col-1 {
+    flex: 0 0 auto;
+    width: 8.333333%;
+}
+
+.col-2 {
+    flex: 0 0 auto;
+    width: 16.666667%;
+}
+
+.col-3 {
+    flex: 0 0 auto;
+    width: 25%;
+}
+
+.col-4 {
+    flex: 0 0 auto;
+    width: 33.333333%;
+}
+
+.col-5 {
+    flex: 0 0 auto;
+    width: 41.666667%;
+}
+
+.col-6 {
+    flex: 0 0 auto;
+    width: 50%;
+}
+
+.col-7 {
+    flex: 0 0 auto;
+    width: 58.333333%;
+}
+
+.col-8 {
+    flex: 0 0 auto;
+    width: 66.666667%;
+}
+
+.col-9 {
+    flex: 0 0 auto;
+    width: 75%;
+}
+
+.col-10 {
+    flex: 0 0 auto;
+    width: 83.333333%;
+}
+
+.col-11 {
+    flex: 0 0 auto;
+    width: 91.666667%;
+}
+
+.col-12 {
+    flex: 0 0 auto;
+    width: 100%;
+}
+
+

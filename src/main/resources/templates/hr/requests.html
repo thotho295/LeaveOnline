@@ -13,9 +13,9 @@
     <div class="nav-bar-container">
         <div id="nav" class="nav-bar">
             <ul>
-                <li><a th:href="@{/admin/home}">Home</a></li>
-                <li><a th:href="@{/admin/employees}">Employee</a></li>
-                <li><a th:href="@{/admin/requests}" class="active">Request</a></li>
+                <li><a th:href="@{/hr/dashboard}">Dashboard</a></li>
+                <li><a th:href="@{/hr/employees}">Employees</a></li>
+                <li><a th:href="@{/hr/requests}" class="active">Requests</a></li>
                 <li><a href="#">More Action</a></li>
             </ul>
         </div>
@@ -55,7 +55,7 @@
                         <th>Day off</th>
                         <th>Reason</th>
                         <th>Status</th>
-                        <th>Approvers</th>
+                        <th>Approver</th>
                         <th>Action</th>
                     </tr>
                     </thead>
@@ -68,17 +68,12 @@
                             <td>@@</td>
                             <td th:text="${request.reason}"></td>
                             <td th:text="${request.status}"></td>
-                            <td>
-                                <select>
-                                    <option th:each="approver : ${request.approvers}"
-                                            th:text="${approver.name}"></option>
-                                </select>
-                            </td>
+                            <td th:text="${request.approver}"></td>
                             <td>
                                 <button th:data-delete="|delete${request.id}|" type="button" class="btn btn-danger" onclick="openModalBox(this.getAttribute('data-delete'))">Delete</button>
                                 <div th:id="|delete${request.id}|" class="modal-box">
                                     <div class="modal-box-content modal-box-content-confirm">
-                                        <form class="form" th:action="@{/admin/request/delete}" method="get">
+                                        <form class="form" th:action="@{/templates/hr/request/delete}" method="get">
                                             <input type="hidden" th:value="${request.id}" name="request_id">
                                             <label> Are your sure delete this request?</label>
                                             <div class="selection">

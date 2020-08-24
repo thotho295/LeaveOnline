@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Leave Management</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+    <style>
+        .text-indent {
+            text-indent: 2.5em;
+        }
+
+        h1 {
+            font-size: 45px;
+        }
+
+        h2 {
+            font-size: 40px;
+        }
+
+        h3 {
+            font-size: 35px;
+        }
+
+        h4 {
+            font-size: 30px;
+        }
+
+        h5 {
+            font-size: 25px;
+        }
+
+        h6 {
+            font-size: 22px;
+        }
+    </style>
+</head>
+<body style="font-size: 22px">
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-10">
+            <div class="text-center">
+                <h4>ĐẠI HỌC KHOA HỌC TỰ NHIÊN</h4>
+                <h4>ĐẠI HỌC QUỐC GIA HÀ NỘI</h4>
+                <div>
+                    <br><br>
+                    <img src="../static/img/report/logo-khtn.jfif" class="rounded" alt="">
+                    <br><br><br>
+                </div>
+                <h1>BÁO CÁO MÔN HỌC</h1>
+                <h2>ĐỒ ÁN PHẦN MỀM</h2>
+                <br>
+                <h4>ĐỀ TÀI</h4>
+                <br>
+                <h3>ỨNG DỤNG XIN NGHỈ PHÉP ONLINE</h3>
+            </div>
+            <br><br>
+            <div class="pl-5">
+                <h4>Giảng viên:</h4>
+                <ul class="pl-5">
+                    <li>TS. Vũ Tiến Dũng</li>
+                    <li>TS. Nguyễn Thị Bích Thủy</li>
+                </ul>
+                <h4>Người hướng dẫn:</h4>
+                <ul class="pl-5">
+                    <li>Giám Đốc Công Ty linxHQ: Phạm Ngọc Cường</li>
+                </ul>
+                <h4>Sinh viên:</h4>
+                <ul class="pl-5">
+                    <li>Nguyễn Thế Hợp - MSV: 18001142 - K63A4 MT&KHTT</li>
+                </ul>
+            </div>
+            <br><br><br><br>
+            <i class="float-right">Khoa Toán – Cơ – Tin Học, Trường Đại học Khoa học Tự Nhiên – Đại học Quốc gia Hà
+                Nội</i>
+            <br>
+            <i class="float-right">Hà Nội, Ngày 23/08/2020</i>
+        </div>
+    </div>
+    <br>
+    <div class="row justify-content-center">
+        <div class="col-10">
+            <h2 class="text-center">Lời mở đầu</h2>
+            <div class="p-3 text-indent">
+                <p>
+                    Bác Hồ có dạy rằng "Học phải đi đôi với hành. Học không hành thì vô ích. Hành không học thì không
+                    trôi
+                    chảy".
+                    Thế nhưng không dễ dàng để chúng ta có được một môi trường tốt, vừa học vừa thực hành.
+                </p>
+                <p>
+                    Vì vậy, em xin chân thành gửi lời cảm ơn đến cô Nguyễn Thị Bích Thủy cùng thầy Vũ Tiến Dũng đã tạo
+                    điều
+                    kiện
+                    cho chúng em được tham gia khóa thực tập tại các công ty. Tại đây chúng em được học và làm việc
+                    trong
+                    môi
+                    trường thực tế, vừa học vừa thực hành. Cũng nhân đây, em xin gửi lời cảm ơn đến anh Phạm Ngọc Cường
+                    -
+                    Giám đốc
+                    công ty LinxHQ đã hướng dẫn, chỉ bảo em trong quá trình thực tập tại công ty.
+                </p>
+                <p>
+                    Một lần nữa, em xin chân thành cảm ơn!
+                </p>
+            </div>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <h2 class="text-center">I. Giới thiệu chung</h2>
+
+            <div class="p-5  text-indent">
+                <p>
+                    Ngày nay, sự phát triển của công nghệ thông tin bùng bổ mạnh mẽ. Tất cả những công việc bàn giấy sẽ
+                    dần dần được thay thế trên nền tảng Internet, giúp giảm chi phí về mặt thời gian, tiền bạc, công
+                    sức.
+                </p>
+                <p>
+                    Khi xem xét đến vấn đề quản lí nghỉ phép của 1 đơn vị hay tổ chức nào. Chúng ta sẽ mất các bước như
+                    mua(xin)
+                    mẫu đơn. Sau đó điền và nộp lên người quản lí để chờ xét duyệt. Điều này đã không còn phù hợp với
+                    ngày nay nữa, chúng ta có thể thay vào đó là sử dụng một ứng dụng xin nghỉ phép online.
+                    Cụ thể :
+                <ul>
+                    <li>
+                        Nhân viên có thể nộp đơn xin nghỉ phép từ xa(remote) thông qua mạng internet.
+                    </li>
+                    <li>
+                        Người quản lí cũng có thể dễ dàng quyết định và phản hồi cho nhân viên thông qua mạng internet.
+                    </li>
+
+                </ul>
+                <p>
+                    Điều này sẽ giúp tiết kiệm được thời gian chờ đợi nộp đơn và thời gian phản hồi. Ngoài ra, nó cũng
+                    giúp
+                    số hóa
+                    các thông tin, dễ dàng tích hợp với các module khác của hệ thống quản lí nhân viên.
+                </p>
+                <p>
+                    Bài toán đặt ra: Xây dựng một ứng dụng web cho phép quản lí(nộp và xác nhận) đơn xin nghỉ phép
+                    online.
+                </p>
+            </div>
+
+            <h4>Cụ thể bài toán</h4>
+            <div class="pl-5 pt-3">
+                <h5>Phát biểu</h5>
+                <div class="p-3 text-indent">
+                    <p>
+                        Linx cần phát triển một ứng dụng web cho phép các nhân viên nộp đơn xin nghỉ phép online.
+                        Với mỗi đơn xin nghỉ cần có các thông tin:
+                    </p>
+                    <ul>
+                        <li>Tên của nhân viên</li>
+                        <li>Ngày bắt đầu và ngày kết thúc của kì nghỉ</li>
+                        <li>Lí do xin nghỉ</li>
+                        <li>Tên của người chấp thuân</li>
+                    </ul>
+                    <p>
+                        Nhân viên có thể xem trạng thái(chấp thuận - từ chối - đang chờ) của các đơn.
+                        Nếu nhân viên được gán là người chấp thuận cho các đơn thì có thể tiến hành
+                        Chấp thuận cho các đơn đó.
+                        Nhân viên có thể xem trạng thái các đồng nghiệp của mình
+                    </p>
+                    <p>
+                        Để sử dụng module này, người dùng phải đăng nhập với tên đăng nhập(email) và mật khẩu
+                    </p>
+                </div>
+                <br>
+                <h5>Các yêu cầu bao gồm:</h5>
+                <ul>
+                    <li>Sử dụng Java kết hợp Spring Framework và Hibernate</li>
+                    <li>Front-end code là HTML, CSS, JavaScript. Mong muốn AngularJS 6</li>
+                    <li>Code phải được cấu hình và có thể triển khai sử dụng Maven</li>
+                    <li>Cơ sở dữ liệu yêu cầu: MySQL</li>
+                    <li>Mã nguồn và lược đồ cơ sở dữ liệu phải được comit trên các git repos</li>
+                </ul>
+            </div>
+            <h4>Công nghệ và công cụ sử dụng</h4>
+            <br>
+            <div class="pl-3">
+                <h5>Các công nghệ back-end</h5>
+                <ul class="pl-5">
+                    <li>Java 11 làm ngôn ngữ lập trình</li>
+                    <li>Spring Framework: Spring Core - Spring Boot - Spring Web - Spring Data - Spring Security</li>
+                    <li>Hibernate: ORM Framework sử dụng trong JPA</li>
+                    <li>MySQL làm cơ sở dữ liệu</li>
+                    <li>Maven Project Management: Build, quản lí các dependency</li>
+                    <li>Swagger2</li>
+                    <li>Git Version of Control</li>
+                    <li>Heroku: Deployment</li>
+                    <li>Developer tool: Dev-tool, Lombok, IntelliJ IDE, Postman</li>
+                </ul>
+
+                <div class="pl-5">
+                    <h6>Ưu điểm của Spring</h6>
+                    <ul>
+                        <li>Mạnh mẽ</li>
+                        <li>Bảo mật*</li>
+                        <li>Test dễ dàng</li>
+                        <li>Có cộng đồng lớn mạnh</li>
+                    </ul>
+
+                    <p>
+                        - Spring Framework cung cấp mô hình lập trình và cấu hình toàn diện cho các ứng dụng
+                        doanh nghiệp dựa trên Java hiện đại - trên bất kỳ loại nền tảng triển khai nào.
+                        <br>
+                        - Spring sử dụng Dependency Injection(DI) để quản lí sự phụ thuộc của các thành phần(components)
+                        với nhau, giúp sử dụng và quản lí dễ dàng.
+                        <br>
+                        - Spring framework chia thành nhiều module riêng biệt, do đó việc sử dụng các tính năng trong
+                        Spring framework rất tự do.
+                        <br>
+                        - Spring không phát minh lại toàn bộ. Nó sử dụng các framework khác như Hibernate, Logging
+                        Framework,...
+                    </p>
+                    <h6>Nhược điểm của Spring</h6>
+                    <p>
+                        - Tuy nhiên, Spring có nhược điểm là phải cấu hình rất nhiều mxl.
+                        Điều này gây mất thời gian, khó khăn cho việc phát triển.
+                        Tuy nhiên, Spring Boot ra đời đã giải quyết vấn đề này, mục tiêu là giảm tất cả những
+                        cấu hình xml bằng cơ chế tự động cấu hình(AutoConfiguration). Phù hợp cho việc xây dựng các
+                        restful API. Booooot!!!!
+                    </p>
+                    <br>
+                    <h6>Hibernate</h6>
+                    <p>
+                        - Hibernate có rất nhiều ưu điểm so với JDBC:
+                    </p>
+                    <ul>
+                        <li>Giảm đáng kể số lượng mã nguồn(Connection, Prepare Query, Mapper, ...)</li>
+                        <li>Không phụ thuộc vào cơ sở dữ liệu do cơ chế Object Relational Mapping - ORM</li>
+                        <li>Cơ chế Lazy Loading giúp cải thiện hiệu suất</li>
+                        <li>Loại bỏ các khối lệnh Try-Catch</li>
+                        <li>Cơ chế Caching giúp cải thiện hiệu suất truy vấn đến cơ sở dữ liệu</li>
+                    </ul>
+                    <p>
+                        - Tuy nhiên, Hibernate cũng có nhược điểm:
+                    </p>
+                    <ul>
+                        <li>Thao tác với HSQL có thể dẫn đến việc lập trình viên quên mất những câu lệnh SQL</li>
+                        <li>Khó khăn trong việc kiểm soát truy vấn, đôi khi với những câu lệnh cuye vấn đơn giản nhưng
+                            Hibernate có thể thực hiện rất nhiều câu lệnh truy vấn trên các bảng. Điều này dẫn đến việc
+                            làm giảm hiệu suất, đòi hỏi lập trình viên phải kiếm soát tốt hơn để tránh các trường hợp
+                            như vậy.
+                        </li>
+                    </ul>
+                    <h6>Các công nghệ khác</h6>
+                    <p>
+                        - MySQL đơn giản, dễ tiếp cận, phù hợp với những ứng dụng nhỏ
+                        <br>
+                        - Lombok giúp giảm số lượng mã nguồn Java(Getter, Setter, Constructer... code)
+                        <br>
+                        - Devtool giúp thuật tiện trong việc test
+                    </p>
+                </div>
+
+                <h5>Các công nghệ front-end</h5>
+                <ul class="pl-5">
+                    <li>Thymeleaf sử dụng như 1 template engine</li>
+                    <li>Bootstrap 4 cho style</li>
+                    <li>JavaScript Library: JQuery</li>
+                    <li>Ajax</li>
+                    <li>Webstorm IDE</li>
+                </ul>
+                <div class="pl-5">
+                    <p>
+                        - Thymeleaf cung cấp 1 cách toàn diện để thao tác, kết nối giữa controller và view trong mô hình
+                        MVC(Model-View-Controller) hoặc cũng có thể làm trong môi trường không phải web. Thymeleaf được
+                        khuyến cáo nên sử dụng cùng với Spring Framework. Ngoài ra, Thymeleaf cũng thân thiện với lập
+                        trình viên
+                        <br>
+                        - Bootstrap nhanh, dễ dàng responsive(Mobile first). Tuy nhiên nặng nề hơn so với css thuần
+                        <br>
+                        - Jquery giúp làm việc với JavaScript một cách nhanh chóng và dễ dàng hơn
+                        <br>
+                        - Ajax giúp xây dựng ứng dụng dạng Single Application, cải thiện hiệu suất cho trang web
+                    </p>
+                </div>
+            </div>
+            <br><br><br><br><br><br>
+            <h2 class="text-center">II. Công việc triển khai</h2>
+            <br>
+            <div class="">
+                <h3>1. Phân tích thiết kế hệ thống</h3>
+                <div class="pl-5 p-3">
+                    <h4>1.1. Phân tích thiết kế UML - UML Diagram</h4>
+                    <div class="pl-5 pt-3">
+                        <h5>1.1.1. Uses case</h5>
+                        <div class="pl-5">
+                            <h6>Về Uses case</h6>
+                            <p>
+                                - Mô tả sự tương tác đặc trưng giữa người dùng bên ngoài (actor) và hệ thống
+                                <br>
+                                - Nó mô tả các yêu cầu đối với hệ thống, có nghĩa là những gì hệ thống phải làm chứ
+                                không phải mô tả hệ thống làm như thế nào
+                                <br>
+                                - Tập hợp tất cả Use case của hệ thống sẽ mô tả tất cả các trường hợp mà hệ thống có thể
+                                được sử dụng
+                            </p>
+                            <h6>Phương pháp</h6>
+                            <p>
+                                - Xác định các Actors, Actions và quan hệ giữa Actor và Action.
+                                <br>
+                                - Các Actors:
+                            </p>
+                            <ul>
+                                <li>Employee</li>
+                                <li>Manager</li>
+                                <li>HR - Human Resource</li>
+                            </ul>
+                            <p>
+                                - Các actions như:
+                            </p>
+                            <ul>
+                                <li>Employee Send Leave Request (and must be Login first)</li>
+                                <li>Employee See Status (and must be login first)</li>
+                                <li>Manager response for leave request (and must be login first)</li>
+                                <li>HR manager employees (and must be login first)</li>
+                                <li>HR make report (and must be login first)</li>
+                            </ul>
+                            <p>
+                                Từ đó, vẽ được uses case:
+                            </p>
+                            <div>
+                                <img src="../static/img/report/uses-case-diagram.PNG" class="rounded mx-auto d-block"
+                                     alt="">
+                                <p class="text-center"><i>Uses Case</i></p>
+                            </div>
+                        </div>
+                        <h5>1.1.2. Activity Diagram</h5>
+                        <div class="pl-5">
+                            <h6>Về Activity Diagram</h6>
+                            <p>
+                                - Là một mô hình logic dùng để mô hình hoá các hoạt động trong một quy trình nghiệp vụ
+                                <br>
+                                - Là sơ đồ luồng xử lý của hệ thống. Bao gồm luồng đi của dòng dữ liệu, dòng sự kiện
+                                <br>
+                                - Dùng để mô tả các hoạt động trong một chức năng của hệ thống. Hay có thể hiểu là mô tả
+                                luồng xử lý của một Use case
+                            </p>
+                            <h6>Phương pháp</h6>
+                            <p>
+                                - Xác định các nghiệp vụ chính từ uses case
+                                <br>
+                                - Xác định các luông thực thi của từng nghiệp vụ(mỗi use case)
+                            </p>
+                            <h6>Request Flow</h6>
+                            <div class="p-3">
+                                <p>
+                                    - Employee gửi yêu cầu nộp đơn<br>
+                                    - Hệ thống gửi thông báo đến quản lí và HR<br>
+                                    - Quản lí phản hồi đơn cho hệ thống<br>
+                                    - Hệ thống nhận thông tin và phản hồi lại cho employee và HR<br>
+                                </p>
+                                <img width="100%" src="../static/img/report/request_activity_diagram.PNG"
+                                     class="rounded sx-auto d-block"
+                                     alt="">
+                                <p class="text-center"><i>Request Flow Activity Diagram</i></p>
+                            </div>
+
+                            <h6>Login Flow</h6>
+                            <div class="p-3">
+                                <p>
+                                    - User đăng nhập vào hệ thống<br>
+                                    - Hệ thống kiểm tra thông tin<br>
+                                    - Hệ thống xác nhận thông tin và chuyển đến đích(Phân quyền)<br>
+                                    - <i>Đây sẽ là phần Security</i>
+                                </p>
+                                <img width="100%" src="../static/img/report/login_activity_diagram.PNG"
+                                     class="rounded sx-auto d-block"
+                                     alt="">
+                                <p class="text-center"><i>Login Flow Activity Diagram</i></p>
+                            </div>
+                        </div>
+                        <h5>1.1.3. E-R Diagram</h5>
+                        <div class="pl-5">
+                            <h6>Về E-R Diagram</h6>
+                            <p>
+                                - Là một mô hình được sử dụng rộng rãi trong các bản thiết kế cơ sở dữ liệu ở mức khái
+                                niệm<br>
+                                - Được xây dựng dựa trên việc nhận thức thế giới thực thông qua tập các đối tượng
+                                được gọi là các thực thể và các mối quan hệ giữa các đối tượng này<br>
+                                - So với mô hình mạng thì mô hình quan hệ thực thể có nhiều ưu điểm hơn và nó thể hiện
+                                rõ hơn các thành phần trong thế giới thực. Nếu như mô hình mạng chỉ biểu diễn các đối
+                                tượng chính chứ không mô tả được các đặc điểm trong đối tượng đó thì trong mô hình quan
+                                hệ thực thể lại khắc phục được những điểm yếu này
+                            </p>
+                            <br><br>
+                            <h6>Các thực thể</h6>
+                            <ul>
+                                <li>Employee</li>
+                                <li>user</li>
+                                <li>Role</li>
+                                <li>LeaveRequest</li>
+                            </ul>
+                            <img width="100%" src="../static/img/report/ER-diagram.PNG" class="rounded sx-auto d-block"
+                                 alt="">
+                            <p class="text-center"><i>E-R Diagram</i></p>
+                        </div>
+                        <h5>1.1.4. Data Base Schema</h5>
+                        <div class="pl-5">
+                            <p>
+                                - Xây dựng dựa trên E-R Diagram<br>
+                                - Mô tả một cách chi tiết nhất cơ sở dữ liệu của ứng dụng
+                                - Từ E-R diagram, ta có DB Schema sau:
+                            </p>
+                            <img width="100%" src="../static/img/report/DB-Schema.PNG" class="rounded sx-auto d-block"
+                                 alt="">
+                            <p class="text-center"><i>DB Schema</i></p>
+                        </div>
+                    </div>
+                    <h4>1.2 Kiến trúc phần mềm - Software Architecture</h4>
+                    <div class="pl-5 pt-3">
+                        <h5>1.2.1. Layered Pattern</h5>
+                        <div class="p-3">
+                            <h6>Về Layered Patter (n-tier layer)</h6>
+                            <p>
+                                - Layered Architecture là một cách chia để trị mối quan tâm, đóng gói và tách riêng,
+                                bằng cách nhóm các đơn vị mã bằng vai trò chức năng của chúng trong ứng dụng<br>
+                                - Ứng dụng sẽ được chia thành nhiều tầng khác nhau, mỗi tầng sẽ có nhiệm vụ riêng<br>
+                                - Thông thường là mô hình 3-tier layer (Presentation - Business Logic - Database
+                                Layer)<br>
+                            </p>
+                            <img src="../static/img/report/layered-pattern.png" class="rounded sx-auto d-block" alt="">
+                            <p class="text-center"><i>Layered Pattern Demo</i></p>
+                            <p>
+                                - Ưu điểm:
+                            </p>
+                            <ul>
+                                <li>Mỗi tầng có nhiệm vụ riêng nên dễ cho việc phát triển và testing</li>
+                                <li>Logic rõ ràng, thống nhất theo các tầng</li>
+                            </ul>
+                            <p>
+                                - Nhược điểm:
+                            </p>
+                            <ul>
+                                <li>Hiệu suất(Performance) nói chung là chậm: Vì phải giao tiếp giữa các tầng, theo thứ
+                                    tự dẫn đến delay
+                                </li>
+                                <li>Khả năng triển khai(deployment) kém vì khi triển khai phải triển khai toàn bộ ứng
+                                    dụng
+                                </li>
+                            </ul>
+                        </div>
+                        <br><br>
+                        <h5>1.2.2. Repository Pattern</h5>
+                        <div class="p-3">
+                            <h6>Repository Pattern</h6>
+                            <p>
+                                - Là một phần của D-D-D (Domain Design Pattern)<br>
+                                - Là lớp trung gian giữa tầng Business Logic và Data Access, giúp cho việc truy cập dữ
+                                liệu chặt chẽ và bảo mật hơn<br>
+                                - Mỗi Repository là cho mỗi entity hoặc business object
+                                - Đang dần là xu hướng thay thế cho Active Record Pattern (Dần phổ biến hơn - good
+                                practice)
+                            </p>
+                            <img src="../static/img/report/repository-pattern.PNG" alt="">
+                            <p class="text-center"><i>Repository Layer</i></p>
+                        </div>
+                    </div>
+                </div>
+                <h3>2. Xây dựng giao diện người dùng - Presentation Layer</h3>
+                <div class="pl-5 p-3">
+                    <h4>2.1. Xác định các giao diện chính</h4>
+                    <div class="p-3">
+                        <p>
+                            Giao diện gồm 2 page chính chia theo mục đích sử dụng:
+                        </p>
+                        <ul>
+                            <li>Employee: Quản lí thông tin cá nhân, nộp đơn xin nghỉ, chấp thuận cho cấp dưới</li>
+                            <li>HR: Quản lí toàn bộ công ty: employee, leave request, report...</li>
+                            <li>Giao diện trang chủ(index)</li>
+                            <li>Các giao diện lỗi(error): 403, 404, 5xx</li>
+                        </ul>
+                    </div>
+                    <h4>2.2. Xác định công nghệ sử dụng</h4>
+                    <div class="p-3">
+                        <p>
+                            Nhằm mục đích học tập, hiểu và sử dụng các công nghệ, giao diện được xây dựng theo 2 cách:
+                        </p>
+                        <ul>
+                            <li>HR: Sử dụng CSS thuần + Js thuần + Jquery, có responsive nhưng chưa tốt</li>
+                            <li>Employee: Sử dụng Bootstrap 4, responsive tốt</li>
+                        </ul>
+                    </div>
+                    <h4>Xác định các components chính</h4>
+                    <div class="p-3">
+                        <p>Phân chia bố cục hợp lí:</p>
+                        <ul>
+                            <li>SideBar</li>
+                            <li>Header</li>
+                            <li>MainContent</li>
+                            <li>Footer</li>
+                        </ul>
+                    </div>
+                    <h4>Triển Khai Code</h4>
+                    <div class="p-3">
+                        <p>
+                            - Xây dựng giao diện đơn giản với CSS, JavaScript, JQuery<br>
+                            - Thực hiện responsive đầu tiên với giao diện đã xây dựng<br>
+                            - Học và sử dụng Boostrap xây dựng giao diện responsive<br>
+                            - Xây dựng giao diện lỗi: 404, 403
+                        </p>
+                    </div>
+                </div>
+                <h3>3. Triển khai các Service Back-end</h3>
+                <div class="pl-5 p-3">
+                    <h4>3.1. Xây dựng tầng thực thể - Entity Layer</h4>
+                    <div class="p-3">
+                        <p>
+                            - Từ lược đồ cơ sở dữ liệu đã xây dựng. Tiến hành xây dựng các thực thể
+                            <br>
+                            - Tạo quan hệ giữa các thực thể sử dụng Hibernate
+                            <br>
+                            - Xây dựng các ràng buộc : Not Null, Unique,...
+                        </p>
+                    </div>
+                    <h4>3.2. Xây dựng tầng Repository - Repository Layer(DAO)</h4>
+                    <div class="p-3">
+                        <p>
+                            - Sử dụng Spring Data, tiến hành xấy dựng các lớp tương ứng với mỗi thực thể
+                            <br>
+                            - Mỗi thực thể sẽ có 1 lớp persistent: Truy vấn trực tiếp đến cơ sở dữ liệu
+                            <br>
+                            - Tầng này sẽ cung cấp dữ liệu cho tầng xử lí nghiệp vụ(serivce layer)
+                        </p>
+                    </div>
+                    <h4>3.3. Xây dựng tầng Dịch vụ - Service Layer</h4>
+                    <div class="p-3">
+                        <p>
+                            - Tiến hành triển khai các logic nghiệp vụ
+                        </p>
+                    </div>
+                </div>
+                <h3>4. Kết nối giữa Back-end và Front-end</h3>
+                <div class="pl-5 p-3">
+                    <div class="pl-5 pt-3">
+                        <p>
+                            - Xây dựng các endpoint(api)
+                            <br>
+                            - Tiến hành thao tác trao đổi dữ liệu dữa tầng giao diện(presentation layer)
+                            và tầng api(controller layer):
+                        </p>
+                        <ul>
+                            <li>Xây dựng các đối tượng <code>form</code>(form object) để lấy dữ liệu từ cliect lên
+                                server
+                            </li>
+                            <li>Sử dụng thymeleaf để truyền dữ liệu từ server đến client</li>
+                        </ul>
+                    </div>
+                </div>
+                <br><br><br>
+                <h3>5. Thực hiển bảo mật - Security </h3>
+                <div class="pl-5 p-3">
+                    <h4>5.1. Xác định bảo mật và phân quyền</h4>
+                    <div class="p-3">
+                        <p>
+                            - Tất cả người dùng đều phải đăng nhập để có thể sử dụng ứng dụng
+                            <br>
+                            - Sẽ có 2 quyền <code>ROLE_HR</code> và <code>Role_EMPLOYEE</code> giành cho HR và employee
+                            <br>
+                            - Các employee chỉ được phép truy cập trang dành cho employee với url
+                            <code>/employee/**</code>
+                            <br>
+                            - Các HR có thể truy cập vào cả hai trang dành cho hr và dành cho employee với url
+                            <code>/employee/**</code> và <code>/hr/**</code>
+                        </p>
+                    </div>
+                    <h4>5.2. Xác định luồng thực thi bảo mật</h4>
+                    <div class="p-3">
+                        <h5>5.2.1. Tổng quan luồng bảo mật</h5>
+                        <div class="p-3">
+                            <p>
+                                - Tất cả các người dùng đều phải đăng nhập mới có thể sử dụng<br>
+                                - Nếu người dùng không đăng nhập, hệ thống sẽ thực hiện chuyển người dùng đến trang đăng
+                                nhập
+                            </p>
+                        </div>
+                        <h5>5.2.2. Tổng quan bảo mật trong Spring</h5>
+                        <div class="p-3">
+                            <h6>Cơ chế bảo mật</h6>
+                            <div class="p-3">
+                                <img src="../static/img/report/security-flow.PNG" alt="">
+                                <p class="text-center"><i>Cơ chế bảo mật</i></p>
+                                <p>
+                                    - Người dùng truy cập vào 1 liên kết được bảo mật<br>
+                                    - <code>FilterSecurityInterceptor</code>: bộ lọc kiểm tra tính xác thực và quăng
+                                    ngoại lệ <code>AccessDeniedException</code><br>
+                                    - <code>ExceptionTranslationFilter</code> khởi tạo <i>Bắt đâu xác thực</i> và gửi
+                                    liên kết chuyển tiếp đến trang đăng nhập được cấu hình bởi <code>AuthenticationEntryPoint</code><br>
+                                    - Sau đó, trình duyệt sẽ yêu cầu trang đăng nhập được chuyển hướng đến<br>
+                                    - Một cái gì đó trong ứng dụng, phải hiển thị trang đăng nhập
+                                </p>
+                            </div>
+                            <h6>Cơ chế xác thực tài khoản</h6>
+                            <div class="p-3">
+                                <img src="../static/img/report/security-authen.PNG" alt="">
+                                <p class="text-center"><i>Cơ chế xác thực tài khoản</i></p>
+                                <p>
+                                    - Khi người dùng nhập thông tin tài khoản và mật khẩu, <code>UsernamePasswordAuthenticationFilter</code>
+                                    xác thực tài khoản và mật khẩu. Quá trình như sau: <br>
+                                    - <code>UsernamePasswordAuthenticationFilte</code> tạo một <code>UsernamePasswordAuthenticationToken</code>
+                                    bằng cách lấy thông tin tài khoản và mật khẩu từ <code>HttpServletRequest</code><br>
+                                    - Tiếp theo, <code>UsernamePasswordAuthenticationToken</code> được truyền vào <code>AuthenticationManager</code>
+                                    để xác thực. Chi tiết của việc này tùy thuộc vào thông tin người dùng được lưu
+                                    trữ<br>
+                                    - Tiếp theo, tùy vào kết quả, thực hiện đăng nhập hoặc báo lỗi
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <h4>5.3. Viết Code</h4>
+                    <div class="p-3">
+                        <p>
+                            - Viết dịch vụ(service) cho người dùng đăng nhập
+                            <br>
+                            - Cấu hình thông tin người dùng vào Spring Security
+                            <br>
+                            - Tiến hành xác thực và phân quyền
+                            <br>
+                        </p>
+                        <div class="pl-5">
+                            <code>
+                                http.authorizeRequests()
+                                <br>
+                                .antMatchers("/hr/**")
+                                <br>
+                                .hasRole("HR")
+                                <br>
+                                .antMatchers("/employee/**")
+                                <br>
+                                .hasRole("EMPLOYEE")
+                                <br>
+                                .antMatchers("/**")
+                                <br>
+                                .permitAll();
+                            </code>
+                        </div>
+                    </div>
+                </div>
+                <h3>6. Triển khai lên Heroku - Heroku Deployment</h3>
+                <div class="pl-5 p-3">
+                    <h4>Tạo herokku app</h4>
+                    <div class="p-3">
+                        <p>
+                            - Các command cơ bản trong heroku:
+                        </p>
+                        <ul>
+                            <li><code>heroku login</code> : Đăng nhập vào tài khoản heroku</li>
+                            <li><code>heroku create 'app-name' </code> : Tạo ứng dụng mới trên heroku</li>
+                            <li><code>heroku addons:create 'db-type'</code> :Thêm một cơ sở dữ liệu vào ứng dụng </li>
+                            <li><code>heroku open</code> : Mở ứng dụng</li>
+                            <li><code>heroku logs</code> : Kiểm tra log</li>
+                        </ul>
+                    </div>
+                    <h4>Cấu hình Cơ sở dữ liệu</h4>
+                    <div class="p-3">
+                        <p>
+                            - Cấu hình url trong <code>application.properties</code>
+                        </p>
+                    </div>
+                    <h4>Deploy</h4>
+                    <div class="p-3">
+                        <p>
+                            - Deploy thông qua git
+                        </p>
+                    </div>
+                </div>
+                <h3>7. Viết báo cáo - Report</h3>
+                <div class="pl-5 p-3">
+                    <h4>7.1. Xây dựng báo cáo: Sử dụng HTML, CSS</h4>
+                    <h4>7.2. Xây dựng bài thuyết trình với Microsoft PowerPoint</h4>
+                </div>
+            </div>
+            <h2>III. Kết quả - Product</h2>
+            <div class="p-3">
+
+            </div>
+            <h2 class="text-center">Phụ lục</h2>
+            <div class="p-3">
+                <h3>Tài liệu tham khảo - Reference</h3>
+                <div class="pl-5 p-3">
+                    <h5>Spring</h5>
+                    <ul>
+                        <li><a href="https://spring.io/">Spring Documentation - https://spring.io/</a></li>
+                        <li><a href="https://mkyong.com/tutorials/spring-boot-tutorials/">
+                            https://mkyong.com/</a></li>
+                        <li><a href="https://o7planning.org/">o7planning - https://o7planning.org/
+                        </a></li>
+                        <li><a href="https://www.baeldung.com/spring-boot">baeldung -
+                            https://www.baeldung.com/spring-boot</a></li>
+                    </ul>
+                    <h5>Bootstrap</h5>
+                    <ul>
+                        <li><a href="https://getbootstrap.com/docs/4.0/getting-started/introduction/">Bootstrap
+                            Documentation - https://getbootstrap.com/docs/4.0/getting-started/introduction/</a></li>
+                        <li><a href="https://www.w3schools.com/bootstrap4/default.asp">W3Schools -
+                            https://www.w3schools.com/bootstrap4/default.asp</a></li>
+                    </ul>
+                    <h5>Bugs</h5>
+                    <ul>
+                        <li><a href="https://stachoverflow.com">StackOverFlow - https://stachoverflow.com</a></li>
+                        <li><a href="https://stachoverflow.com">GitHub issue - https://github.com</a></li>
+                        <li><a href="https://stackexchange.com/">StackExchange - https://stackexchange.com/</a></li>
+                    </ul>
+                </div>
+            </div>
+            <h2>Nhận xét của công ty - Company Review</h2>
+            <div class="p-3">
+                <h3>Về công ty</h3>
+                <div class="pl-5 pt-3">
+                    <p>
+                        <b>Công ty LinxHQ</b>
+                        <br>
+                        Địa chỉ: Số 8 - Thọ Tháp - Cầu Giấy - Hà Nội
+                        <br>
+                        Website: <a href="">linxHQ</a>
+                        <br><br>
+                        <img src="../static/img/report/linx-address.PNG" class="rounded mx-auto d-block" alt="">
+                    </p>
+                </div>
+                <h3>Người hướng dẫn</h3>
+                <div class="pl-5 pt-3">
+                    <p>
+                        <b>Phạm Ngọc Cường</b>
+                        <br>
+                        Giám đốc công ty
+                        <br>
+                        Email:  joseph.pnc@linxhq.com
+                        <br>
+                        Số điện thoại: 0984317851
+                    </p>
+                </div>
+                <h3>Nhận xét về quá trình thực tập</h3>
+                <div class="pl-5 pt-3">
+                    <p>
+                        - Xác nhận công việc được giao có đúng với báo cáo
+                        <br>
+                        - Kết quả đạt được có đúng như báo cáo
+                        <br>
+                        - Ý thức, thái độ làm việc trong thời gian thực tập tại công ty
+                        <br>
+                        - Những việc cần góp ý với sinh viên/nhà trường
+                        <br>
+                        - Có tiếp tục nhận sinh viên ở lại làm việc cho công ty không ?
+                        <br>
+                        - Đánh giá điểm: Thang điểm 10, làm tròn tới 0.5
+                        <br>
+                        - Ký và đóng dấu
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://kit.fontawesome.com/f83b9ba1b1.js" crossorigin="anonymous"></script>
+</body>
+</html>

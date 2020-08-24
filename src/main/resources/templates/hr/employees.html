@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Leave | Employees</title>
@@ -12,9 +13,9 @@
     <div class="nav-bar-container">
         <div id="nav" class="nav-bar">
             <ul>
-                <li><a th:href="@{/admin/home}">Home</a></li>
-                <li><a th:href="@{/admin/employees}" class="active">Employee</a></li>
-                <li><a th:href="@{/admin/requests}">Request</a></li>
+                <li><a th:href="@{/hr/dashboard}">Dashboard</a></li>
+                <li><a th:href="@{/hr/employees}" class="active">Employees</a></li>
+                <li><a th:href="@{/hr/requests}">Requests</a></li>
                 <li><a href="#">More Action</a></li>
             </ul>
         </div>
@@ -65,21 +66,28 @@
                             <td th:text="${employee.onWork}">ON WORK</td>
                             <td>
                                 <select>
-                                    <option th:each="managerFor : ${employee.employees}"
-                                            th:text="${managerFor.name}"></option>
+                                    <option th:each="lower : ${employee.lowerLevels}"
+                                            th:text="${lower.name}"></option>
                                 </select>
                             </td>
                             <td>
                                 <select>
-                                    <option th:each="managerBy : ${employee.managers}"
-                                            th:text="${managerBy.name}"></option>
+                                    <option th:each="lower : ${employee.lowerLevels}"
+                                            th:text="${lower.name}"></option>
                                 </select>
                             </td>
                             <td>
-                                <div>
-                                    <img src="#" th:src="@{/img/detail.png}" alt="@@">
-                                    <img src="#" th:src="@{/img/edit.png}" alt="@@">
-                                    <img src="#" th:src="@{/img/delete.jpg}" alt="@@">
+                                <button th:data-delete="|delete${employee.id}|" type="button" class="btn btn-danger" onclick="openModalBox(this.getAttribute('data-delete'))">Delete</button>
+                                <div th:id="|delete${employee.id}|" class="modal-box">
+                                    <div class="modal-box-content modal-box-content-confirm">
+                                        <form class="form" th:action="@{|/hr/employees/delete/${employee.email}|}" method="post">
+                                            <label> Are your sure delete this employee ?</label>
+                                            <div class="selection">
+                                                <button type="submit" class="btn btn-danger">Confirm Delete</button>
+                                                <button th:data-delete="|delete${employee.id}|" type="button" class="btn btn-normal" onclick="closeModalBox(this.getAttribute('data-delete'))">Cancel</button>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </td>
                         </tr>
@@ -91,36 +99,30 @@
             <div id="add-employee" class="modal-box">
                 <div class="modal-box-content">
                     <span class="close-modal" onclick="closeModalBox('add-employee')">&times;</span>
-                    <form class="form" action="#" th:action="@{/admin/employee}" th:object="${addEmployeeForm}"
+                    <form class="form" action="#" th:action="@{/hr/add-employee}" th:object="${form}"
                           method="post">
                         <label for="name">Name</label>
-                        <input type="text" id="name" name="name" th:field="*{inputName}" placeholder="Employee's name.."
+                        <input type="text" id="name" name="name" placeholder="Employee's name.." th:field="*{inputName}"
                                required>
 
                         <label for="email">Email</label>
-                        <input type="text" id="email" name="email" th:field="*{inputEmail}"
-                               placeholder="Employee's email.."
+                        <input type="text" id="email" name="email" placeholder="Employee's email.."
+                               th:field="*{inputEmail}"
                                required>
 
-                        <label for="managers">Managers</label>
+                        <label for="manager">Manager</label>
+                        <select id="manager" th:field="*{managerId}">
+                            <option value="">-- Select Manager --</option>
+                            <option th:each="manager : ${employees}" th:value="${manager.id}" th:text="${manager.name}">Hulk</option>
+                        </select>
 
-                        <div id="managers" class="dropdown">
-                            <label id="dropdown-label" class="dropdown-label" onclick="getDropDown()">Select
-                                Managers</label>
-
-                            <div id="dropdown-list" class="dropdown-list">
-
-                                <div class="checkbox" onclick="updateDropDownValue()" th:each="manager : ${employees}">
-                                    <input type="checkbox" name="dropdown-group" class="checkbox-item"
-                                           id="${manager}" th:value="${manager.id}" th:id="${manager.id}"
-                                           th:field="*{selectManagers}"/>
-                                    <label for="${manager}" th:for="${manager.id}" class="checkbox-custom-label"
-                                           th:text="${manager.name}"></label>
-                                </div>
-                            </div>
-
-                            <input type="submit" value="Submit" class="btn">
-                        </div>
+                        <label for="role">Role</label>
+                        <select id="role" th:field="*{role}">
+                            <option value="">-- Select Role --</option>
+                            <option value="ROLE_HR">HR</option>
+                            <option value="ROLE_EMPLOYEE">Employee</option>
+                        </select>
+                        <input type="submit" value="Add now" class="btn">
                     </form>
                 </div>
             </div>

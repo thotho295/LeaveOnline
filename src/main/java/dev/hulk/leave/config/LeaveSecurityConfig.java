@@ -10,19 +10,12 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.access.AccessDeniedHandler;
 
 @Configuration
 @EnableWebSecurity
 public class LeaveSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private MyUserDetailService myUserDetailService;
-    private AccessDeniedHandler accessDeniedHandler;
-
-    @Autowired
-    public void setAccessDeniedHandler(AccessDeniedHandler accessDeniedHandler) {
-        this.accessDeniedHandler = accessDeniedHandler;
-    }
 
     @Autowired
     public void setMyUserDetailService(MyUserDetailService myUserDetailService) {
@@ -43,22 +36,15 @@ public class LeaveSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
 
-//        http
-//                .authorizeRequests()
-//                .antMatchers("/admin").hasRole("ADMIN")
-//                .antMatchers("/employee").hasRole("USER")
-//                .antMatchers("/").permitAll();
-//        http
-//                .formLogin()
-//                .permitAll();
         http.authorizeRequests()
-//                .antMatchers("/admin/**")
-//                .hasRole("ADMIN")
-                .antMatchers("/employee/**")
-                .hasRole("USER")
+//                .antMatchers("/hr/**")
+//                .hasRole("HR")
+//                .antMatchers("/manager/**")
+//                .hasAnyRole("MANAGER")
+//                .antMatchers("/employee/**")
+//                .hasRole("EMPLOYEE")
                 .antMatchers("/**")
                 .permitAll();
-
         http.
                 formLogin()
                 .permitAll()
@@ -66,9 +52,6 @@ public class LeaveSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .permitAll();
-//                .and()
-//                .exceptionHandling()
-//                .accessDeniedHandler(accessDeniedHandler);
 
         http
                 .authorizeRequests()

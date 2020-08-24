@@ -55,17 +55,17 @@
                     <i class="fas fa-home fa-2x"></i>
                     <span class="d-none d-lg-inline">DashBoard</span>
                 </a>
-                <a class="nav-link p-0 p-lg-3 active" th:href="@{/employee/colleagues}">
+                <a class="nav-link p-0 p-lg-3" th:href="@{/employee/colleagues}">
                     <i class="fas fa-users fa-2x"></i>
                     <span class="d-none d-lg-inline">Colleagues</span>
                 </a>
 
-                <a class="nav-link p-0 p-lg-3 active">
+                <a class="nav-link p-0 p-lg-3" th:href="@{/employee/approve}">
                     <i class="fas fa-user-check fa-2x"></i>
                     <span class="d-none d-lg-inline ">Approve</span>
                 </a>
 
-                <a class="nav-link p-0 p-lg-3" href="colleagues.html" th:href="@{/employee/lower-level}">
+                <a class="nav-link p-0 p-lg-3 active">
                     <i class="fas fa-users fa-2x"></i>
                     <span class="d-none d-lg-inline ">Your Team</span>
                 </a>
@@ -103,33 +103,20 @@
                 <table class="table table-striped table-hover table-bordered">
                     <thead class="thead-dark">
                     <tr>
+                        <th scope="col">No.</th>
                         <th scope="col">Name</th>
+                        <th scope="col">Email</th>
                         <th scope="col">Status</th>
-                        <th scope="col">Reason</th>
-                        <th scope="col">Action</th>
                     </tr>
 
                     </thead>
                     <tbody>
-                    <th:block th:each="leave : ${leaves}">
+                    <th:block th:each="lower : ${lowers}">
                         <tr>
-                            <td th:text="${leave.employee.name}">Hulk</td>
-                            <td th:text="${leave.employee.onWork}">On</td>
-                            <td th:text="${leave.reason}">Just For Fun</td>
-                            <td width="17%">
-                                <form method="post" th:action="@{|/employee/approve/approve/${leave.id}|}">
-                                    <button type="submit" class="border-0">
-                                        <i class="fa fa-check-circle fa-2x"></i>
-                                    </button>
-                                </form>
-
-                                <button type="button" class="border-0">
-                                    <i class="fa fa-ban fa-2x"></i>
-                                </button>
-                                <button type="button" class="border-0">
-                                    <i class="fa fa-info-circle fa-2x"></i>
-                                </button>
-                            </td>
+                            <td>1</td>
+                            <td th:text="${lower.name}">Hulk</td>
+                            <td th:text="${lower.email}">On</td>
+                            <td th:text="${lower.onWork}">Just For Fun</td>
                         </tr>
                     </th:block>
                     </tbody>

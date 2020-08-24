@@ -1,23 +1,28 @@
 package dev.hulk.leave.entity;
 
 import com.sun.istack.NotNull;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.Set;
 
 @Entity
 @Table(name = "leave_request")
+@Getter
+@Setter
 public class LeaveRequest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @Setter(AccessLevel.NONE)
+    private Integer id;
 
-    @Column(name = "start_time")
+    @Column(name = "start_date")
     @NotNull
     private Date start;
 
-    @Column(name = "end_time")
+    @Column(name = "end_date")
     @NotNull
     private Date end;
 
@@ -29,66 +34,11 @@ public class LeaveRequest {
     @NotNull
     private String status;
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     @ManyToOne
+    @NotNull
     private Employee employee;
 
-    @ManyToMany
-    @JoinTable(
-            name = "request_approver",
-            joinColumns = @JoinColumn(name = "request_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "employee_id", referencedColumnName = "id")
-    )
-    private Set<Employee> approvers;
-
-    public int getId() {
-        return id;
-    }
-
-    public Date getStart() {
-        return start;
-    }
-
-    public void setStart(Date start) {
-        this.start = start;
-    }
-
-    public Date getEnd() {
-        return end;
-    }
-
-    public void setEnd(Date end) {
-        this.end = end;
-    }
-
-    public String getReason() {
-        return reason;
-    }
-
-    public void setReason(String reason) {
-        this.reason = reason;
-    }
-
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-
-    public Set<Employee> getApprovers() {
-        return approvers;
-    }
-
-    public void setApprovers(Set<Employee> approvers) {
-        this.approvers = approvers;
-    }
+    @ManyToOne
+    @NotNull
+    private Employee approver;
 }
