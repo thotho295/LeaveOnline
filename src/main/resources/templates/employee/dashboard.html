@@ -26,14 +26,17 @@
 <div class="container-fluid">
     <div class="row d-block d-md-none">
         <nav class="navbar navbar-light bg-light">
-            <a class="navbar-brand" href="#">
-                Home
+            <a class="navbar-brand">
+                Dashboard
             </a>
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="#" th:href="@{/employee/colleagues}">
                 Colleagues
             </a>
-            <a class="navbar-brand" href="#">
-                Colleagues
+            <a class="navbar-brand" href="#" th:href="@{/employee/approve}">
+                Approve
+            </a>
+            <a class="navbar-brand" href="#" th:href="@{/employee/lower-level}">
+                Your Team
             </a>
             <a class="navbar-brand" id="profile-sm" href="#" data-toggle="dropdown" aria-haspopup="true"
                aria-expanded="false">
@@ -43,7 +46,7 @@
                 <a class="dropdown-item" href="#">Profile</a>
                 <a class="dropdown-item" href="#">Change Password</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Logout</a>
+                <a class="dropdown-item" href="#" th:href="@{/logout}">Logout</a>
             </div>
         </nav>
     </div>
@@ -51,7 +54,7 @@
         <div class="col-md-1 col-lg-3 p-md-0 p-lg-1 border d-none d-md-block" id="sidebar-container">
             <nav id="sidebar"
                  class="navbar flex-column align-items-md-center align-items-lg-start p-0 p-lg-3 border">
-                <a class="nav-link p-0 p-lg-3 active" href="">
+                <a class="nav-link p-0 p-lg-3 active">
                     <i class="fas fa-home fa-2x"></i>
                     <span class="d-none d-lg-inline">DashBoard</span>
                 </a>
@@ -75,7 +78,7 @@
 
         <div class="col border">
             <div class="container-fluid border mt-2 bg-light">
-                <p class="h2 d-inline-block text-success">EastGate Software</p>
+                <p class="h2 d-inline-block text-success">LinxHQ</p>
                 <a class="navbar-brand float-right d-none d-md-inline-block" id="profile-lg" href="#"
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-user-circle fa-2x"></i>
@@ -84,7 +87,7 @@
                     <a class="dropdown-item" href="#">Profile</a>
                     <a class="dropdown-item" href="#">Change Password</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Logout</a>
+                    <a class="dropdown-item" href="#" th:href="@{/logout}">Logout</a>
                 </div>
             </div>
             <br>

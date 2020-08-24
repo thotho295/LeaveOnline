@@ -9,6 +9,7 @@ import java.util.List;
 @Table(name = "role")
 @Data
 @RequiredArgsConstructor
+@NoArgsConstructor
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

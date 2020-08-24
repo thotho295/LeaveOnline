@@ -37,12 +37,10 @@ public class LeaveSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 
         http.authorizeRequests()
-//                .antMatchers("/hr/**")
-//                .hasRole("HR")
-//                .antMatchers("/manager/**")
-//                .hasAnyRole("MANAGER")
-//                .antMatchers("/employee/**")
-//                .hasRole("EMPLOYEE")
+                .antMatchers("/hr/**")
+                .hasRole("HR")
+                .antMatchers("/employee/**")
+                .hasAnyRole("HR", "EMPLOYEE")
                 .antMatchers("/**")
                 .permitAll();
         http.
