@@ -41,6 +41,9 @@ public class HomeController {
         userService.createNew(boss_form);
         userService.createNew(hr_form);
 
+        employeeService.createNew(boss_form);
+        employeeService.createNew(hr_form);
+
         return "index";
     }
 }

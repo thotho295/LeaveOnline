@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <title>Leave Management</title>
     <meta charset="utf-8">
@@ -48,7 +48,8 @@
                 <h4>ĐẠI HỌC QUỐC GIA HÀ NỘI</h4>
                 <div>
                     <br><br>
-                    <img src="../static/img/report/logo-khtn.jfif" class="rounded" alt="">
+                    <img src="../static/img/report/logo-khtn.jfif" th:src="@{/img/report/logo-khtn.jfif}"
+                         class="rounded" alt="">
                     <br><br><br>
                 </div>
                 <h1>BÁO CÁO MÔN HỌC</h1>
@@ -84,7 +85,106 @@
     <br>
     <div class="row justify-content-center">
         <div class="col-10">
-            <h2 class="text-center">Lời mở đầu</h2>
+            <h2 class="text-center">Mục lục</h2>
+            <div class="p-3">
+                <ol type="I" start="0">
+                    <li><a href="#loimodau">Lời mở đầu
+                        .........................................................................................................................................................
+                        3</a>
+                    </li>
+                    <li><a href="#gioi-thieu-chung">Giới thiệu chung
+                        ..............................................................................................................................................
+                        4</a>
+                        <ol type="1">
+                            <li><a href="#cu-the-bai-toan">Cụ thể bài toán
+                                ........................................................................................................................................
+                                4</a>
+                            </li>
+                            <li><a href="#cong-nghe">Công nghệ và công cụ sử dụng
+                                ........................................................................................................
+                                5</a>
+                            </li>
+                        </ol>
+                    </li>
+                    <li><a href="#cong-viec">Công việc triển khai
+                        ........................................................................................................................................
+                        7</a>
+                        <ol type="1">
+                            <li><a href="#phan-tich-thiet-ke-he-thong">Phân tích thiết kế hệ thống
+                                ................................................................................................................
+                                7</a>
+                            </li>
+                            <li><a href="#xay-dung-giao-dien-nguoi-dung">Xây dựng giao diện người dùng
+                                ....................................................................................................
+                                13</a>
+                            </li>
+                            <li><a href="#trien-khai-cac-service">Triển khai các dịch vụ back-end
+                                ......................................................................................................
+                                14</a>
+                            </li>
+                            <li><a href="#ket-noi">Kết nối giữa Back-end và Front-end
+                                .............................................................................................
+                                15</a>
+                            </li>
+                            <li><a href="#bao-mat">Thực hiện bảo mật
+                                ...............................................................................................................................
+                                15</a>
+                            </li>
+                            <li><a href="#trien-khai-heroku">Triển khai lên Heroku
+                                ..........................................................................................................................
+                                17</a>
+                            </li>
+                            <li><a href="#viet-bao-cao">Viết báo cáo
+                                ............................................................................................................................................
+                                18</a>
+                            </li>
+                        </ol>
+                    </li>
+                    <li><a href="#ket-qua">Kết quả
+                        ..............................................................................................................................................................
+                        19</a>
+                        <ol type="1">
+                            <li><a href="#ma-nguon">Mã nguồn
+                                ................................................................................................................................................
+                                19</a>
+                            </li>
+                            <li><a href="#giao-dien">Giao diện
+                                ..................................................................................................................................................
+                                19</a>
+                            </li>
+                        </ol>
+                    </li>
+                    <li><a href="#phu-luc">Phụ
+                        lục
+                        ...............................................................................................................................................................
+                        23</a>
+                    </li>
+                    <li><a href="#nhan-xet">Nhận xét của công ty
+                        ..................................................................................................................................
+                        24</a>
+                        <ol type="1">
+                            <li><a href="#ve-cong-ty">Về công ty
+                                ...............................................................................................................................................
+                                24</a>
+                            </li>
+                            <li><a href="#nguoi-huong-dan">Người hướng dẫn
+                                .................................................................................................................................
+                                25</a>
+                            </li>
+                            <li><a href="#nhan-xet-detail">Nhận xét về quá trình thực tập
+                                .......................................................................................................
+                                25</a>
+                            </li>
+                        </ol>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <div class="row justify-content-center">
+        <div class="col-10">
+            <h2 class="text-center" id="loimodau">Lời mở đầu</h2>
             <div class="p-3 text-indent">
                 <p>
                     Bác Hồ có dạy rằng "Học phải đi đôi với hành. Học không hành thì vô ích. Hành không học thì không
@@ -110,7 +210,7 @@
             </div>
             <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
             <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-            <h2 class="text-center">I. Giới thiệu chung</h2>
+            <h2 class="text-center" id="gioi-thieu-chung">I. Giới thiệu chung</h2>
 
             <div class="p-5  text-indent">
                 <p>
@@ -145,7 +245,7 @@
                 </p>
             </div>
 
-            <h4>Cụ thể bài toán</h4>
+            <h4 id="cu-the-bai-toan">1. Cụ thể bài toán</h4>
             <div class="pl-5 pt-3">
                 <h5>Phát biểu</h5>
                 <div class="p-3 text-indent">
@@ -176,10 +276,10 @@
                     <li>Front-end code là HTML, CSS, JavaScript. Mong muốn AngularJS 6</li>
                     <li>Code phải được cấu hình và có thể triển khai sử dụng Maven</li>
                     <li>Cơ sở dữ liệu yêu cầu: MySQL</li>
-                    <li>Mã nguồn và lược đồ cơ sở dữ liệu phải được comit trên các git repos</li>
+                    <li>Mã nguồn và lược đồ cơ sở dữ liệu phải được commit trên các git repos</li>
                 </ul>
             </div>
-            <h4>Công nghệ và công cụ sử dụng</h4>
+            <h4 id="cong-nghe">2. Công nghệ và công cụ sử dụng</h4>
             <br>
             <div class="pl-3">
                 <h5>Các công nghệ back-end</h5>
@@ -282,10 +382,10 @@
                 </div>
             </div>
             <br><br><br><br><br><br>
-            <h2 class="text-center">II. Công việc triển khai</h2>
+            <h2 class="text-center" id="cong-viec">II. Công việc triển khai</h2>
             <br>
             <div class="">
-                <h3>1. Phân tích thiết kế hệ thống</h3>
+                <h3 id="phan-tich-thiet-ke-he-thong">1. Phân tích thiết kế hệ thống</h3>
                 <div class="pl-5 p-3">
                     <h4>1.1. Phân tích thiết kế UML - UML Diagram</h4>
                     <div class="pl-5 pt-3">
@@ -326,7 +426,8 @@
                                 Từ đó, vẽ được uses case:
                             </p>
                             <div>
-                                <img src="../static/img/report/uses-case-diagram.PNG" class="rounded mx-auto d-block"
+                                <img src="../static/img/report/uses-case-diagram.PNG"
+                                     th:src="@{/img/report/uses-case-diagram.PNG}" class="rounded mx-auto d-block"
                                      alt="">
                                 <p class="text-center"><i>Uses Case</i></p>
                             </div>
@@ -357,6 +458,7 @@
                                     - Hệ thống nhận thông tin và phản hồi lại cho employee và HR<br>
                                 </p>
                                 <img width="100%" src="../static/img/report/request_activity_diagram.PNG"
+                                     th:src="@{/img/report/request_activity_diagram.PNG}"
                                      class="rounded sx-auto d-block"
                                      alt="">
                                 <p class="text-center"><i>Request Flow Activity Diagram</i></p>
@@ -371,6 +473,7 @@
                                     - <i>Đây sẽ là phần Security</i>
                                 </p>
                                 <img width="100%" src="../static/img/report/login_activity_diagram.PNG"
+                                     th:src="@{/img/report/login_activity_diagram.PNG}"
                                      class="rounded sx-auto d-block"
                                      alt="">
                                 <p class="text-center"><i>Login Flow Activity Diagram</i></p>
@@ -397,7 +500,9 @@
                                 <li>Role</li>
                                 <li>LeaveRequest</li>
                             </ul>
-                            <img width="100%" src="../static/img/report/ER-diagram.PNG" class="rounded sx-auto d-block"
+                            <img width="100%" src="../static/img/report/ER-diagram.PNG"
+                                 th:src="@{/img/report/ER-diagram.PNG}"
+                                 class="rounded sx-auto d-block"
                                  alt="">
                             <p class="text-center"><i>E-R Diagram</i></p>
                         </div>
@@ -408,7 +513,9 @@
                                 - Mô tả một cách chi tiết nhất cơ sở dữ liệu của ứng dụng
                                 - Từ E-R diagram, ta có DB Schema sau:
                             </p>
-                            <img width="100%" src="../static/img/report/DB-Schema.PNG" class="rounded sx-auto d-block"
+                            <img width="100%" src="../static/img/report/DB-Schema.PNG"
+                                 th:src="@{/img/report/DB-Schema.PNG}"
+                                 class="rounded sx-auto d-block"
                                  alt="">
                             <p class="text-center"><i>DB Schema</i></p>
                         </div>
@@ -420,12 +527,14 @@
                             <h6>Về Layered Patter (n-tier layer)</h6>
                             <p>
                                 - Layered Architecture là một cách chia để trị mối quan tâm, đóng gói và tách riêng,
-                                bằng cách nhóm các đơn vị mã bằng vai trò chức năng của chúng trong ứng dụng<br>
+                                bằng cách nhóm các đơn vị bằng vai trò chức năng của chúng trong ứng dụng<br>
                                 - Ứng dụng sẽ được chia thành nhiều tầng khác nhau, mỗi tầng sẽ có nhiệm vụ riêng<br>
                                 - Thông thường là mô hình 3-tier layer (Presentation - Business Logic - Database
                                 Layer)<br>
                             </p>
-                            <img src="../static/img/report/layered-pattern.png" class="rounded sx-auto d-block" alt="">
+                            <img src="../static/img/report/layered-pattern.png"
+                                 th:src="@{/img/report/layered-pattern.png}"
+                                 class="rounded sx-auto d-block" alt="">
                             <p class="text-center"><i>Layered Pattern Demo</i></p>
                             <p>
                                 - Ưu điểm:
@@ -458,12 +567,13 @@
                                 - Đang dần là xu hướng thay thế cho Active Record Pattern (Dần phổ biến hơn - good
                                 practice)
                             </p>
-                            <img src="../static/img/report/repository-pattern.PNG" alt="">
+                            <img src="../static/img/report/repository-pattern.PNG"
+                                 th:src="@{/img/report/repository-pattern.PNG}" alt="">
                             <p class="text-center"><i>Repository Layer</i></p>
                         </div>
                     </div>
                 </div>
-                <h3>2. Xây dựng giao diện người dùng - Presentation Layer</h3>
+                <h3 id="xay-dung-giao-dien-nguoi-dung">2. Xây dựng giao diện người dùng - Presentation Layer</h3>
                 <div class="pl-5 p-3">
                     <h4>2.1. Xác định các giao diện chính</h4>
                     <div class="p-3">
@@ -507,7 +617,7 @@
                         </p>
                     </div>
                 </div>
-                <h3>3. Triển khai các Service Back-end</h3>
+                <h3 id="trien-khai-cac-service">3. Triển khai các Service Back-end</h3>
                 <div class="pl-5 p-3">
                     <h4>3.1. Xây dựng tầng thực thể - Entity Layer</h4>
                     <div class="p-3">
@@ -531,12 +641,32 @@
                     </div>
                     <h4>3.3. Xây dựng tầng Dịch vụ - Service Layer</h4>
                     <div class="p-3">
-                        <p>
-                            - Tiến hành triển khai các logic nghiệp vụ
-                        </p>
+                        <h5>Tiến hành triển khai các logic nghiệp vụ</h5>
+                        <ul>
+                            <li>
+                                Employee : Các thao tác CRUD
+                                <ul>
+                                    <li>Thêm 1 nhân viên mới từ 1 form</li>
+                                    <li>Sửa thông tin của nhân viên từ 1 form</li>
+                                    <li>Truy vấn thông tin của 1 và nhiều nhân viên</li>
+                                </ul>
+                            </li>
+                            <li>
+                                Leave Request: Các thao tác CRUD
+                                <ul>
+                                    <li>Thêm 1 đơn yêu cầu mới từ 2 form</li>
+                                    <li>Cập nhật trạng thái đã chấp thuận(accepted) hoặc đã từ chối(rejected)</li>
+                                    <li>Thống kê số lượng ngày nghỉ theo tháng, năm của 1 và nhiều nhân viên</li>
+                                </ul>
+                            </li>
+                            <li>
+                                Ứng với mỗi service, sẽ có các triển khai(implement) của repository tương ứng
+                            </li>
+                        </ul>
                     </div>
                 </div>
-                <h3>4. Kết nối giữa Back-end và Front-end</h3>
+                <br><br><br>
+                <h3 id="ket-noi">4. Kết nối giữa Back-end và Front-end</h3>
                 <div class="pl-5 p-3">
                     <div class="pl-5 pt-3">
                         <p>
@@ -553,8 +683,8 @@
                         </ul>
                     </div>
                 </div>
-                <br><br><br>
-                <h3>5. Thực hiển bảo mật - Security </h3>
+                <br>
+                <h3 id="bao-mat">5. Thực hiển bảo mật - Security </h3>
                 <div class="pl-5 p-3">
                     <h4>5.1. Xác định bảo mật và phân quyền</h4>
                     <div class="p-3">
@@ -584,7 +714,8 @@
                         <div class="p-3">
                             <h6>Cơ chế bảo mật</h6>
                             <div class="p-3">
-                                <img src="../static/img/report/security-flow.PNG" alt="">
+                                <img src="../static/img/report/security-flow.PNG"
+                                     th:src="@{/img/report/security-flow.PNG}" alt="">
                                 <p class="text-center"><i>Cơ chế bảo mật</i></p>
                                 <p>
                                     - Người dùng truy cập vào 1 liên kết được bảo mật<br>
@@ -598,7 +729,8 @@
                             </div>
                             <h6>Cơ chế xác thực tài khoản</h6>
                             <div class="p-3">
-                                <img src="../static/img/report/security-authen.PNG" alt="">
+                                <img src="../static/img/report/security-authen.PNG"
+                                     th:src="@{/img/report/security-authen.PNG}" alt="">
                                 <p class="text-center"><i>Cơ chế xác thực tài khoản</i></p>
                                 <p>
                                     - Khi người dùng nhập thông tin tài khoản và mật khẩu, <code>UsernamePasswordAuthenticationFilter</code>
@@ -634,7 +766,7 @@
                                 <br>
                                 .antMatchers("/employee/**")
                                 <br>
-                                .hasRole("EMPLOYEE")
+                                .hasAnyRole("EMPLOYEE", "HR")
                                 <br>
                                 .antMatchers("/**")
                                 <br>
@@ -643,7 +775,7 @@
                         </div>
                     </div>
                 </div>
-                <h3>6. Triển khai lên Heroku - Heroku Deployment</h3>
+                <h3 id="trien-khai-heroku">6. Triển khai lên Heroku - Heroku Deployment</h3>
                 <div class="pl-5 p-3">
                     <h4>Tạo herokku app</h4>
                     <div class="p-3">
@@ -653,7 +785,7 @@
                         <ul>
                             <li><code>heroku login</code> : Đăng nhập vào tài khoản heroku</li>
                             <li><code>heroku create 'app-name' </code> : Tạo ứng dụng mới trên heroku</li>
-                            <li><code>heroku addons:create 'db-type'</code> :Thêm một cơ sở dữ liệu vào ứng dụng </li>
+                            <li><code>heroku addons:create 'db-type'</code> :Thêm một cơ sở dữ liệu vào ứng dụng</li>
                             <li><code>heroku open</code> : Mở ứng dụng</li>
                             <li><code>heroku logs</code> : Kiểm tra log</li>
                         </ul>
@@ -667,21 +799,95 @@
                     <h4>Deploy</h4>
                     <div class="p-3">
                         <p>
-                            - Deploy thông qua git
+                            - Deploy thông qua git: <code>git push heroku master</code>
                         </p>
                     </div>
                 </div>
-                <h3>7. Viết báo cáo - Report</h3>
+                <h3 id="viet-bao-cao">7. Viết báo cáo - Report</h3>
                 <div class="pl-5 p-3">
                     <h4>7.1. Xây dựng báo cáo: Sử dụng HTML, CSS</h4>
                     <h4>7.2. Xây dựng bài thuyết trình với Microsoft PowerPoint</h4>
                 </div>
             </div>
-            <h2>III. Kết quả - Product</h2>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <h2 id="ket-qua" class="text-center">III. Kết quả - Product</h2>
             <div class="p-3">
-
+                <h3 id="ma-nguon">1. Mã nguồn - Source code</h3>
+                <div class="pl-5 p-3">
+                    <p>Trang web được triển khai trên Heroku : <a href="https://leave-online-by-hulk-v1.herokuapp.com/"
+                                                                  target="_blank">https://leave-online-by-hulk-v1.herokuapp.com/</a>
+                    </p>
+                    <p>Toàn bộ mã nguồn được đặt tại:<a href="https://github.com/Puskin2911/LeaveOnline"
+                                                        target="_blank">https://github.com/Puskin2911/LeaveOnline</a>
+                    </p>
+                </div>
+                <h3 id="giao-dien">2. Giao diện</h3>
+                <div class="p-3">
+                    <h4>Giao diện HR</h4>
+                    <div class="p-3">
+                        <h5>Giao diện quản lí nhân viên</h5>
+                        <div class="p-3">
+                            <img width="100%" src="../static/img/report/hr-employees.PNG"
+                                 th:src="@{/img/report/hr-employees.PNG}" alt="">
+                            <p class="text-center"><i>HR Employees</i></p>
+                        </div>
+                        <h5>Thêm nhân viên</h5>
+                        <div class="p-3">
+                            <img width="100%" src="../static/img/report/add-employee.PNG"
+                                 th:src="@{/img/report/add-employee.PNG}" alt="">
+                            <p class="text-center"><i>Add Employee</i></p>
+                        </div>
+                        <h5>Giao diện quản lí các đơn</h5>
+                        <div class="p-3">
+                            <img width="100%" src="../static/img/report/hr-leaves.PNG"
+                                 th:src="@{/img/report/hr-leaves.PNG}"
+                                 alt="">
+                            <p class="text-center"><i>HR Leave Requests</i></p>
+                        </div>
+                    </div>
+                    <h4>Giao diện Employee</h4>
+                    <div class="p-3">
+                        <h5>Employee Dashboard</h5>
+                        <div class="p-3">
+                            <img width="100%" src="../static/img/report/employee-dashboard.PNG"
+                                 th:src="@{/img/report/employee-dashboard.PNG}" alt="">
+                            <p class="text-center"><i>Employee Dashboard</i></p>
+                        </div>
+                        <br><br><br><br><br><br><br><br><br>
+                        <h5>Thêm yêu cầu mới</h5>
+                        <div class="p-3">
+                            <img width="100%" src="../static/img/report/employee-new-request.PNG"
+                                 th:src="@{/img/report/employee-new-request.PNG}" alt="">
+                            <p class="text-center"><i>New Request</i></p>
+                        </div>
+                        <h5>Chấp thuận các đơn</h5>
+                        <div class="p-3">
+                            <img width="100%" src="../static/img/report/employee-approve.PNG"
+                                 th:src="@{/img/report/employee-approve.PNG}" alt="">
+                            <p class="text-center"><i>Approve Request</i></p>
+                        </div>
+                        <h5>Chấp thuận các đơn</h5>
+                        <div class="p-3">
+                            <img width="100%" src="../static/img/report/employee-yourteam.PNG"
+                                 th:src="@{/img/report/employee-yourteam.PNG}" alt="">
+                            <p class="text-center"><i>Approve Request</i></p>
+                        </div>
+                        <br><br>
+                        <h5>Giao diện responsive</h5>
+                        <div class="p-3">
+                            <img width="100%" src="../static/img/report/employee-res-1.PNG"
+                                 th:src="@{/img/report/employee-res-1.PNG}" alt="">
+                            <p class="text-center"><i>Responsive Medium</i></p>
+                            <img width="100%" src="../static/img/report/employee-res-small.PNG"
+                                 th:src="@{/img/report/employee-res-small.PNG}" alt="">
+                            <p class="text-center"><i>Responsive Small</i></p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <h2 class="text-center">Phụ lục</h2>
+            <br><br><br><br><br><br><br><br><br><br>
+            <h2 class="text-center" id="phu-luc">IV. Phụ lục</h2>
             <div class="p-3">
                 <h3>Tài liệu tham khảo - Reference</h3>
                 <div class="pl-5 p-3">
@@ -710,9 +916,10 @@
                     </ul>
                 </div>
             </div>
-            <h2>Nhận xét của công ty - Company Review</h2>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <h2 id="nhan-xet" class="text-center">V. Nhận xét của công ty - Company Review</h2>
             <div class="p-3">
-                <h3>Về công ty</h3>
+                <h3 id="ve-cong-ty">1. Về công ty</h3>
                 <div class="pl-5 pt-3">
                     <p>
                         <b>Công ty LinxHQ</b>
@@ -721,36 +928,31 @@
                         <br>
                         Website: <a href="">linxHQ</a>
                         <br><br>
-                        <img src="../static/img/report/linx-address.PNG" class="rounded mx-auto d-block" alt="">
+                        <img src="../static/img/report/linx-address.PNG"
+                             th:src="@{/img/report/linx-address.PNG}"
+                             class="rounded mx-auto d-block" alt="">
                     </p>
                 </div>
-                <h3>Người hướng dẫn</h3>
+                <h3 id="nguoi-huong-dan">2. Người hướng dẫn</h3>
                 <div class="pl-5 pt-3">
                     <p>
                         <b>Phạm Ngọc Cường</b>
                         <br>
                         Giám đốc công ty
                         <br>
-                        Email:  joseph.pnc@linxhq.com
+                        Email: joseph.pnc@linxhq.com
                         <br>
                         Số điện thoại: 0984317851
                     </p>
                 </div>
-                <h3>Nhận xét về quá trình thực tập</h3>
+                <h3 id="nhan-xet-detail">3. Nhận xét về quá trình thực tập</h3>
                 <div class="pl-5 pt-3">
                     <p>
-                        - Xác nhận công việc được giao có đúng với báo cáo
-                        <br>
-                        - Kết quả đạt được có đúng như báo cáo
-                        <br>
-                        - Ý thức, thái độ làm việc trong thời gian thực tập tại công ty
-                        <br>
-                        - Những việc cần góp ý với sinh viên/nhà trường
-                        <br>
-                        - Có tiếp tục nhận sinh viên ở lại làm việc cho công ty không ?
-                        <br>
-                        - Đánh giá điểm: Thang điểm 10, làm tròn tới 0.5
-                        <br>
+                        - Xác nhận công việc được giao và kết quả có đúng với báo cáo<br>
+                        - Ý thức, thái độ làm việc trong thời gian thực tập tại công ty<br>
+                        - Những việc cần góp ý với sinh viên/nhà trường<br>
+                        - Có tiếp tục nhận sinh viên ở lại làm việc cho công ty không ?<br>
+                        - Đánh giá điểm: Thang điểm 10, làm tròn tới 0.5<br>
                         - Ký và đóng dấu
                     </p>
                 </div>

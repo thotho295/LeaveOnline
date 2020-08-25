@@ -69,7 +69,7 @@
                             <td>@@</td>
                             <td th:text="${request.reason}"></td>
                             <td th:text="${request.status}"></td>
-                            <td th:text="${request.approver}"></td>
+                            <td th:text="${request.approver.name}"></td>
                             <td>
                                 <button th:data-delete="|delete${request.id}|" type="button" class="btn btn-danger" onclick="openModalBox(this.getAttribute('data-delete'))">Delete</button>
                                 <div th:id="|delete${request.id}|" class="modal-box">

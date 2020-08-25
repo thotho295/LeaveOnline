@@ -71,21 +71,26 @@
                                             th:text="${lower.name}"></option>
                                 </select>
                             </td>
+                            <td th:if="${employee.upperLevel}" th:text="${employee.upperLevel.name}"></td>
+                            <td th:unless="${employee.upperLevel}" th:text="None"></td>
                             <td>
-                                <select>
-                                    <option th:each="lower : ${employee.lowerLevels}"
-                                            th:text="${lower.name}"></option>
-                                </select>
-                            </td>
-                            <td>
-                                <button th:data-delete="|delete${employee.id}|" type="button" class="btn btn-danger" onclick="openModalBox(this.getAttribute('data-delete'))">Delete</button>
+                                <img src="#" th:src="@{/img/detail.jpg}" alt="@@">
+                                <img src="#" th:src="@{/img/edit.svg}" alt="@@">
+                                <img src="#" th:src="@{/img/delete.svg}"
+                                     th:data-delete="|delete${employee.id}|"
+                                     onclick="openModalBox(this.getAttribute('data-delete'))"
+                                     alt="@@">
                                 <div th:id="|delete${employee.id}|" class="modal-box">
                                     <div class="modal-box-content modal-box-content-confirm">
-                                        <form class="form" th:action="@{|/hr/employees/delete/${employee.email}|}" method="post">
+                                        <form class="form" th:action="@{|/hr/employees/delete/${employee.email}|}"
+                                              method="post">
                                             <label> Are your sure delete this employee ?</label>
                                             <div class="selection">
                                                 <button type="submit" class="btn btn-danger">Confirm Delete</button>
-                                                <button th:data-delete="|delete${employee.id}|" type="button" class="btn btn-normal" onclick="closeModalBox(this.getAttribute('data-delete'))">Cancel</button>
+                                                <button th:data-delete="|delete${employee.id}|" type="button"
+                                                        class="btn btn-normal"
+                                                        onclick="closeModalBox(this.getAttribute('data-delete'))">Cancel
+                                                </button>
                                             </div>
                                         </form>
                                     </div>
@@ -114,7 +119,9 @@
                         <label for="manager">Manager</label>
                         <select id="manager" th:field="*{managerId}">
                             <option value="">-- Select Manager --</option>
-                            <option th:each="manager : ${employees}" th:value="${manager.id}" th:text="${manager.name}">Hulk</option>
+                            <option th:each="manager : ${employees}" th:value="${manager.id}" th:text="${manager.name}">
+                                Hulk
+                            </option>
                         </select>
 
                         <label for="role">Role</label>
