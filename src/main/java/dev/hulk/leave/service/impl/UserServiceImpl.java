@@ -53,4 +53,13 @@ public class UserServiceImpl implements UserService {
     public void deleteByEmail(String email) {
         userRepository.deleteByUsername(email);
     }
+
+    @Override
+    public void changePassword(String email, String newPass) {
+        User user = userRepository.findOneByUsername(email);
+
+        user.setPassHash(passwordEncoder.encode(newPass));
+
+        userRepository.save(user);
+    }
 }
