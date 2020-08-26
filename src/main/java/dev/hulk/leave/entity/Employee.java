@@ -34,6 +34,7 @@ public class Employee {
     private List<Employee> lowerLevels;
 
     @ManyToOne
+    @JoinColumn(name = "upper_level_id")
     private Employee upperLevel;
 
     @OneToMany(mappedBy = "employee")

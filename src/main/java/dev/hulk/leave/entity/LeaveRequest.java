@@ -35,10 +35,12 @@ public class LeaveRequest {
     private String status;
 
     @ManyToOne
+    @JoinColumn(name = "employee_id") // an sua code
     @NotNull
     private Employee employee;
 
     @ManyToOne
+    @JoinColumn(name = "approver_id") // an sua code
     @NotNull
     private Employee approver;
 }

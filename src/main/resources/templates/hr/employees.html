@@ -65,14 +65,15 @@
                             <td th:text="${employee.name}">Name</td>
                             <td th:text="${employee.email}">email</td>
                             <td th:text="${employee.onWork}">ON WORK</td>
-                            <td>
+                            <td th:if="${employee.lowerLevels.size() == 0}">
                                 <select>
                                     <option th:each="lower : ${employee.lowerLevels}"
                                             th:text="${lower.name}"></option>
                                 </select>
                             </td>
+                            <td th:unless="${employee.lowerLevels}" text=""></td>
                             <td th:if="${employee.upperLevel}" th:text="${employee.upperLevel.name}"></td>
-                            <td th:unless="${employee.upperLevel}" th:text="None"></td>
+                            <td th:unless="${employee.upperLevel}" text=" "></td>
                             <td>
                                 <img src="#" th:src="@{/img/detail.jpg}" alt="@@">
                                 <img src="#" th:src="@{/img/edit.svg}" alt="@@">

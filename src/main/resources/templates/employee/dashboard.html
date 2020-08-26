@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+<html xmlns:th="http://www.thymeleaf.org"
       lang="en">
 <head>
     <title>Leave Management</title>
@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <!--    <link rel="stylesheet" href="test.css">-->
+    <link rel="stylesheet" href="../../static/css/employee.css" th:href="@{/css/employee.css}">
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -19,8 +19,6 @@
             integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
             crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <script src="../../static/js/authentication.js" th:src="@{/js/authentication.js}"></script>
 </head>
 <body>
 <div class="container-fluid">
@@ -51,9 +49,9 @@
         </nav>
     </div>
     <div class="row">
-        <div class="col-md-1 col-lg-3 p-md-0 p-lg-1 border d-none d-md-block" id="sidebar-container">
+        <div class="col-md-1 col-lg-3 p-md-0 p-lg-1 d-none d-md-block shadow" id="sidebar-container">
             <nav id="sidebar"
-                 class="navbar flex-column align-items-md-center align-items-lg-start p-0 p-lg-3 border">
+                 class="navbar flex-column align-items-md-center align-items-lg-start p-0 p-lg-3">
                 <a class="nav-link p-0 p-lg-3 active">
                     <i class="fas fa-home fa-2x"></i>
                     <span class="d-none d-lg-inline">DashBoard</span>
@@ -76,7 +74,7 @@
             </nav>
         </div>
 
-        <div class="col border">
+        <div class="col">
             <div class="container-fluid border mt-2 bg-light">
                 <p class="h2 d-inline-block text-success">LinxHQ</p>
                 <a class="navbar-brand float-right d-none d-md-inline-block" id="profile-lg" href="#"
@@ -254,7 +252,6 @@
                 <table class="table table-striped table-hover table-bordered">
                     <thead class="thead-dark">
                     <tr>
-<!--                        <th scope="col">No.</th>-->
                         <th scope="col">From</th>
                         <th scope="col">To</th>
                         <th scope="col">Reason</th>
@@ -267,7 +264,6 @@
 
                     <th:block th:each="request : ${requests}">
                         <tr>
-<!--                            <th scope="row">1</th>-->
                             <td th:text="${request.start}">29-11-2000</td>
                             <td th:text="${request.end}">29-11-2020</td>
                             <td th:text="${request.reason}">Just for fun</td>
@@ -278,15 +274,13 @@
                     </tbody>
                 </table>
             </div>
+            <br>
+            <div class="border bg-light p-2">
+                <h5 class="text-center">&copy; Copyright by Hulk</h5>
+            </div>
         </div>
     </div>
 </div>
-
-<div class="modal" id="modal">
-
-</div>
-
-<!--<script src="../../static/style.js" th:src="@{/style.js}"></script>-->
 
 <script src="https://kit.fontawesome.com/f83b9ba1b1.js" crossorigin="anonymous"></script>
 

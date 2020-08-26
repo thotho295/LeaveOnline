@@ -13,7 +13,7 @@ import java.util.List;
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Setter(AccessLevel.NONE)
+    @Setter(AccessLevel.NONE) // Ko lien quan, lombok thoi
     private Integer id;
 
     @NonNull

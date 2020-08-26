@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <!--    <link rel="stylesheet" href="test.css">-->
+    <link rel="stylesheet" href="../../static/css/employee.css" th:href="@{/css/employee.css}">
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -23,17 +23,17 @@
 <div class="container-fluid">
     <div class="row d-block d-md-none">
         <nav class="navbar navbar-light bg-light">
-            <a class="navbar-brand" href="#">
-                <!--                <i class="fas fa-user-check fa-lg"></i>-->
-                Home
+            <a class="navbar-brand">
+                Dashboard
             </a>
-            <a class="navbar-brand" href="#">
-                <!--                <i class="fas fa-user-check fa-lg"></i>-->
+            <a class="navbar-brand" href="#" th:href="@{/employee/colleagues}">
                 Colleagues
             </a>
-            <a class="navbar-brand" href="#">
-                <!--                <i class="fas fa-user-check fa-lg"></i>-->
-                Colleagues
+            <a class="navbar-brand" href="#" th:href="@{/employee/approve}">
+                Approve
+            </a>
+            <a class="navbar-brand" href="#" th:href="@{/employee/lower-level}">
+                Your Team
             </a>
             <a class="navbar-brand" id="profile-sm" href="#" data-toggle="dropdown" aria-haspopup="true"
                aria-expanded="false">
@@ -43,24 +43,24 @@
                 <a class="dropdown-item" href="#">Profile</a>
                 <a class="dropdown-item" href="#">Change Password</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Logout</a>
+                <a class="dropdown-item" href="#" th:href="@{/logout}">Logout</a>
             </div>
         </nav>
     </div>
     <div class="row">
-        <div class="col-md-1 col-lg-3 p-md-0 p-lg-1 border d-none d-md-block" id="sidebar-container">
+        <div class="col-md-1 col-lg-3 p-md-0 p-lg-1 d-none d-md-block shadow" id="sidebar-container">
             <nav id="sidebar"
-                 class="navbar flex-column align-items-md-center align-items-lg-start p-0 p-lg-3 border">
-                <a class="nav-link p-0 p-lg-3" th:href="@{/employee/dashboard}">
+                 class="navbar flex-column align-items-md-center align-items-lg-start p-0 p-lg-3">
+                <a class="nav-link p-0 p-lg-3" href="dashboard.html" th:href="@{/employee/dashboard}">
                     <i class="fas fa-home fa-2x"></i>
                     <span class="d-none d-lg-inline">DashBoard</span>
                 </a>
-                <a class="nav-link p-0 p-lg-3" th:href="@{/employee/colleagues}">
+                <a class="nav-link p-0 p-lg-3" href="colleagues.html" th:href="@{/employee/colleagues}">
                     <i class="fas fa-users fa-2x"></i>
                     <span class="d-none d-lg-inline">Colleagues</span>
                 </a>
 
-                <a class="nav-link p-0 p-lg-3" th:href="@{/employee/approve}">
+                <a class="nav-link p-0 p-lg-3" href="approve.html" th:href="@{/employee/approve}">
                     <i class="fas fa-user-check fa-2x"></i>
                     <span class="d-none d-lg-inline ">Approve</span>
                 </a>
@@ -73,8 +73,8 @@
             </nav>
         </div>
 
-        <div class="col border">
-            <div class="container-fluid border mt-2 bg-light">
+        <div class="col">
+            <div class="container-fluid mt-2 bg-light">
                 <p class="h2 d-inline-block text-success">EastGate Software</p>
                 <!--                <img src="cool-panda-guc-prints.jpg" height="60px" class="d-inline rounded rounded-circle float-right" alt="...">-->
                 <a class="navbar-brand float-right d-none d-md-inline-block" id="profile-lg" href="#"
@@ -121,6 +121,11 @@
                     </th:block>
                     </tbody>
                 </table>
+            </div>
+
+            <br>
+            <div class="border bg-light p-2">
+                <h5 class="text-center">&copy; Copyright by Hulk</h5>
             </div>
         </div>
     </div>

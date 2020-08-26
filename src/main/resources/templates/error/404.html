@@ -3,39 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>Leave | 404</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
-    <link th:href="@{/css/404.css}" rel="stylesheet" type="text/css">
-    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+
+    <link href="../../static/css/404.css" th:href="@{/css/404.css}" rel="stylesheet" type="text/css">
 </head>
 <body>
-<div class="wrapper">
-    <div class="TextHolder">
-        <div class="Texts">
-            <div class="FourOhFour">404</div>
-            <div class="Maybe">GUH.. Maybe.. We have</div>
-            <span>PROBLEMS HERE</span>
-            <div class="Bad">MY BAD this page couldn't be found.</div>
-            <div class="Return">RETURN HOME</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="error-template">
+                <h1>
+                    Oops!</h1>
+                <h2>
+                    404 Not Found</h2>
+                <div class="error-details">
+                    Sorry, an error has occured, Requested page not found!
+                </div>
+                <div class="error-actions">
+                    <a th:href="@{/}" href="#" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
+                        Take Me Home </a><a th:href="@{/}" href="" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-envelope"></span> Contact Support </a>
+                </div>
+            </div>
         </div>
-        <div class="Body">
-            <div class="LeftEye"></div>
-            <div class="RightEye"></div>
-            <div class="EyeShadows"></div>
-            <div class="Mouth"></div>
-            <div class="MouthShadows"></div>
-            <div class="Theet"></div>
-            <div class="BodyTexture"></div>
-        </div>
-        <div class="Horns">
-            <div class="HornsExtras"></div>
-        </div>
-        <div class="LeftHand"></div>
-        <div class="RightHand"></div>
     </div>
 </div>
-
-<button class="btn"><a th:href="">Go home</a></button>
-<script th:src="@{/js/404.js}" type="application/javascript" rel="script"></script>
 
 </body>
 </html>
