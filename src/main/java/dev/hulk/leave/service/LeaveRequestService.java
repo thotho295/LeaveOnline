@@ -20,4 +20,6 @@ public interface LeaveRequestService {
     void approve(Integer id);
 
     void reject(Integer id);
+
+    List<LeaveRequest> getAllPendingRequest();
 }

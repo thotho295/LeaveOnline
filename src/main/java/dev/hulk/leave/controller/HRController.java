@@ -25,7 +25,11 @@ public class HRController {
     }
 
     @GetMapping(value = "/dashboard")
-    public String home(){
+    public String home(Model model){
+
+        model.addAttribute("employees", employeeService.getAll());
+        model.addAttribute("pending", leaveRequestService.getAllPendingRequest());
+
         return "hr/dashboard";
     }
 

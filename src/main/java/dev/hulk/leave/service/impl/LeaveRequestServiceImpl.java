@@ -112,4 +112,9 @@ public class LeaveRequestServiceImpl implements LeaveRequestService {
 
         leaveRequestRepository.save(leaveRequest);
     }
+
+    @Override
+    public List<LeaveRequest> getAllPendingRequest() {
+        return leaveRequestRepository.findAllByStatus("Pending");
+    }
 }

@@ -46,17 +46,56 @@
                 <button type="button" class="btn">Some Action</button>
             </div>
 
-            <div class="table-container">
-                <h4>No more data here. I will update analysis data after.</h4>
-            </div>
-
-            <div class="container">
-                <div class="row">
+            <div class="container-fluid">
+                <div class="row justify-content-around">
                     <div class="col-3">
-                        Alo
+                        <div class="card border-left border-success">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total
+                                        </div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"
+                                             th:text="${employees.size()} + ' employees'">employees
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-3">
-                        Alo
+                        <div class="card border-left border-success">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">On work
+                                        </div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"
+                                             th:text="${employees.size()} + ' employees'">30 employees
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br><br>
+                <div class="row justify-content-around">
+                    <div class="col-3">
+                        <div class="card border-left border-success">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Pending
+                                            Request
+                                        </div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"
+                                             th:text="${pending.size()} + ' requests'">10 requests
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

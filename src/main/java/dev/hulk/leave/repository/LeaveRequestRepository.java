@@ -10,11 +10,11 @@ import java.util.List;
 public interface LeaveRequestRepository extends JpaRepository<LeaveRequest, Integer> {
     List<LeaveRequest> findAllByEmployee(Employee employee);
 
-    List<LeaveRequest> findAllByEmployeeAndStartGreaterThan(Employee employee, Date start);
-
     List<LeaveRequest> findAllByStatusAndStartLessThanEqualAndEndGreaterThanEqual(String status, Date start, Date end);
 
     List<LeaveRequest> findAllByEmployeeAndStatus(Employee employee, String pending);
 
     LeaveRequest findOneById(Integer id);
+
+    List<LeaveRequest> findAllByStatus(String pending);
 }
