@@ -13,11 +13,11 @@ import java.util.List;
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Setter(AccessLevel.NONE) // Ko lien quan, lombok thoi
+    @Setter(AccessLevel.NONE)
     private Integer id;
 
     @NonNull
-    @Column(name = "name", length = 30, nullable = false)
+    @Column(name = "name", length = 30, nullable = false, unique = true)
     private String name;
 
     @OneToMany(mappedBy = "role")

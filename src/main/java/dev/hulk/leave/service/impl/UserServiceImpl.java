@@ -41,7 +41,7 @@ public class UserServiceImpl implements UserService {
 
         user.setEmployee(employee);
 
-        Role role = roleRepository.findOneByName(form.getRole());
+        Role role = roleRepository.findRoleByName(form.getRole());
 
         user.setRole(role);
 

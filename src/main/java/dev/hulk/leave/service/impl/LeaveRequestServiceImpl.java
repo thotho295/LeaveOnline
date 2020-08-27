@@ -65,7 +65,7 @@ public class LeaveRequestServiceImpl implements LeaveRequestService {
 
         Employee approver = employee.getUpperLevel();
         if(approver == null){
-            Role role = roleRepository.findOneByName("ROLE_HR");
+            Role role = roleRepository.findRoleByName("ROLE_HR");
             User user = userRepository.findOneByRole(role);
             approver = employeeRepository.findOneByUser(user);
         }
