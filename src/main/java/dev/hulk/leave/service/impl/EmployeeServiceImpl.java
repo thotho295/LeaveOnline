@@ -7,6 +7,7 @@ import dev.hulk.leave.repository.EmployeeRepository;
 import dev.hulk.leave.repository.LeaveRequestRepository;
 import dev.hulk.leave.repository.UserRepository;
 import dev.hulk.leave.service.EmployeeService;
+import dev.hulk.leave.service.MailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,7 +23,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     private final LeaveRequestRepository leaveRequestRepository;
 
     @Autowired
-    public EmployeeServiceImpl(UserRepository userRepository, EmployeeRepository employeeRepository, LeaveRequestRepository leaveRequestRepository) {
+    public EmployeeServiceImpl(UserRepository userRepository, EmployeeRepository employeeRepository, LeaveRequestRepository leaveRequestRepository, MailService mailService) {
         this.userRepository = userRepository;
         this.employeeRepository = employeeRepository;
         this.leaveRequestRepository = leaveRequestRepository;
@@ -43,7 +44,6 @@ public class EmployeeServiceImpl implements EmployeeService {
         employee.setUser(user);
 
         employeeRepository.save(employee);
-
     }
 
     @Override

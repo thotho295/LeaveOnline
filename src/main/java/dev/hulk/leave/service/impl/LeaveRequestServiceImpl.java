@@ -10,9 +10,8 @@ import dev.hulk.leave.repository.LeaveRequestRepository;
 import dev.hulk.leave.repository.RoleRepository;
 import dev.hulk.leave.repository.UserRepository;
 import dev.hulk.leave.service.LeaveRequestService;
+import dev.hulk.leave.service.MailService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,18 +27,18 @@ public class LeaveRequestServiceImpl implements LeaveRequestService {
     private final EmployeeRepository employeeRepository;
     private final RoleRepository roleRepository;
     private final UserRepository userRepository;
-    private final JavaMailSender javaMailSender;
+    private final MailService mailService;
 
     @Autowired
     public LeaveRequestServiceImpl(LeaveRequestRepository leaveRequestRepository,
                                    EmployeeRepository employeeRepository,
                                    RoleRepository roleRepository,
-                                   UserRepository userRepository, JavaMailSender javaMailSender) {
+                                   UserRepository userRepository, MailService mailService) {
         this.leaveRequestRepository = leaveRequestRepository;
         this.employeeRepository = employeeRepository;
         this.roleRepository = roleRepository;
         this.userRepository = userRepository;
-        this.javaMailSender = javaMailSender;
+        this.mailService = mailService;
     }
 
     @Override
@@ -79,8 +78,8 @@ public class LeaveRequestServiceImpl implements LeaveRequestService {
         leaveRequestRepository.save(leaveRequest);
 
         try{
-            String message = employee.getName() + "sent a new request for leave \n Check it now";
-            sendEmail(employee.getUpperLevel().getEmail(), message);
+            String message = employee.getName() + " sent a new request for leave \n Check it now";
+            mailService.sendEmail(employee.getUpperLevel().getEmail(), message);
         }
         catch (Exception e){
             e.printStackTrace();
@@ -119,7 +118,7 @@ public class LeaveRequestServiceImpl implements LeaveRequestService {
 
         try {
             String message = "Your Leave Request have been Accepted by " + employee.getName() + "\n Check it!";
-            sendEmail(leaveRequest.getEmployee().getEmail(), message);
+            mailService.sendEmail(leaveRequest.getEmployee().getEmail(), message);
         }
         catch (Exception e){
             e.printStackTrace();
@@ -138,7 +137,7 @@ public class LeaveRequestServiceImpl implements LeaveRequestService {
 
         try {
             String message = "Your Leave Request have been Rejected by " + employee.getName() + "\n Check it!";
-            sendEmail(leaveRequest.getEmployee().getEmail(), message);
+           mailService.sendEmail(leaveRequest.getEmployee().getEmail(), message);
         }
         catch (Exception e){
             e.printStackTrace();
@@ -153,16 +152,5 @@ public class LeaveRequestServiceImpl implements LeaveRequestService {
     @Override
     public void deleteById(Integer requestId) {
         leaveRequestRepository.deleteById(requestId);
-    }
-
-    void sendEmail(String destination, String message){
-        SimpleMailMessage mgs = new SimpleMailMessage();
-
-        mgs.setTo(destination);
-        mgs.setSubject("Leave Request Notification");
-        mgs.setText(message);
-
-        javaMailSender.send(mgs);
-        System.out.println("Mail sent!");
     }
 }
