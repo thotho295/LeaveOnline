@@ -75,8 +75,7 @@
 
         <div class="col">
             <div class="container-fluid mt-2 bg-light">
-                <p class="h2 d-inline-block text-success">EastGate Software</p>
-                <!--                <img src="cool-panda-guc-prints.jpg" height="60px" class="d-inline rounded rounded-circle float-right" alt="...">-->
+                <p class="h2 d-inline-block text-success">LinxHQ</p>
                 <a class="navbar-brand float-right d-none d-md-inline-block" id="profile-lg" href="#"
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-user-circle fa-2x"></i>
@@ -99,7 +98,11 @@
 
             <br>
 
-            <div class="table-responsive">
+            <div th:if="${lowers.size() == 0}" >
+                <p class="text-center"><b>You don't have any under level. Try the best to be a manager and lead a team</b></p>
+            </div>
+
+            <div th:if="${lowers.size() != 0}" class="table-responsive">
                 <table class="table table-striped table-hover table-bordered">
                     <thead class="thead-dark">
                     <tr>
@@ -113,7 +116,7 @@
                     <tbody>
                     <th:block th:each="lower : ${lowers}">
                         <tr>
-                            <td>1</td>
+                            <td th:text="${lowers.indexOf(lower)} + 1">1</td>
                             <td th:text="${lower.name}">Hulk</td>
                             <td th:text="${lower.email}">On</td>
                             <td th:text="${lower.onWork}">Just For Fun</td>

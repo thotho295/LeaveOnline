@@ -14,4 +14,6 @@ public interface EmployeeService {
     List<Employee> getAllLowerByEmployeeEmail(String name);
 
     void deleteByEmail(String email);
+
+    Employee getOneByEmail(String email);
 }

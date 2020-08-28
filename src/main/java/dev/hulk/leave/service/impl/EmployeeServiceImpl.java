@@ -69,4 +69,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
         employeeRepository.deleteByEmail(email);
     }
+
+    @Override
+    public Employee getOneByEmail(String email) {
+        return employeeRepository.findOneByEmail(email);
+    }
 }

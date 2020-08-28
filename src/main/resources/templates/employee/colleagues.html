@@ -95,7 +95,10 @@
             </div>
 
             <br>
-            <div class="table-responsive">
+            <div th:if="${colleaguesOff.size() == 0}">
+                <p class="text-center"><b>No colleagues off today</b></p>
+            </div>
+            <div th:if="${colleaguesOff.size() != 0}" class="table-responsive">
                 <table class="table table-striped table-hover table-bordered">
                     <thead class="thead-dark">
                     <tr>
@@ -109,7 +112,7 @@
                     <tbody class="">
                     <th:block th:each="leave : ${colleaguesOff}">
                         <tr>
-                            <th scope="row">1</th>
+                            <th th:text="${colleaguesOff.indexOf(leave) + 1}">1</th>
                             <td th:text="${leave.employee.name}">Hulk</td>
                             <td th:text="${leave.start}">Date</td>
                             <td th:text="${leave.end}">Date</td>

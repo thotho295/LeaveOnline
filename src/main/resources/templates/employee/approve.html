@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+<html xmlns:th="http://www.thymeleaf.org"
       lang="en">
 <head>
     <title>Leave Management</title>
@@ -76,7 +76,6 @@
         <div class="col">
             <div class="container-fluid mt-2 bg-light">
                 <p class="h2 d-inline-block text-success">LinxHQ</p>
-                <!--                <img src="cool-panda-guc-prints.jpg" height="60px" class="d-inline rounded rounded-circle float-right" alt="...">-->
                 <a class="navbar-brand float-right d-none d-md-inline-block" id="profile-lg" href="#"
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-user-circle fa-2x"></i>
@@ -99,12 +98,18 @@
 
             <br>
 
-            <div class="table-responsive">
+            <div th:if="${leaves.size() == 0}">
+                <p class="text-center"><b>Have no leave request today. That's good!</b></p>
+            </div>
+            <div th:if="${leaves.size() != 0}" class="table-responsive">
                 <table class="table table-striped table-hover table-bordered">
                     <thead class="thead-dark">
                     <tr>
+                        <th scope="col">No.</th>
                         <th scope="col">Name</th>
                         <th scope="col">Status</th>
+                        <th scope="col">Start Time</th>
+                        <th scope="col">End Time</th>
                         <th scope="col">Reason</th>
                         <th scope="col">Action</th>
                     </tr>
@@ -113,19 +118,57 @@
                     <tbody>
                     <th:block th:each="leave : ${leaves}">
                         <tr>
+                            <td th:text="${leaves.indexOf(leave) + 1}"></td>
                             <td th:text="${leave.employee.name}">Hulk</td>
                             <td th:text="${leave.employee.onWork}">On</td>
+                            <td th:text="${leave.start}">Start</td>
+                            <td th:text="${leave.end}">End</td>
                             <td th:text="${leave.reason}">Just For Fun</td>
                             <td width="17%">
-                                <form method="post" th:action="@{|/employee/approve/approve/${leave.id}|}">
-                                    <button type="submit" class="border-0">
-                                        <i class="fa fa-check-circle fa-2x"></i>
-                                    </button>
-                                </form>
+                                <button type="button" class="border-0" th:data-accept=" |accept${leave.id}|"
+                                        onclick="openModalBox(this.getAttribute('data-accept'))">
+                                    <i class="fa fa-check-circle fa-2x"></i>
+                                </button>
+                                <div th:id="'accept' + ${leave.id}" class="modal-box">
+                                    <div class="modal-box-content modal-box-content-confirm">
+                                        <form class="form" th:action="@{|/employee/approve/approve/${leave.id}|}"
+                                              method="post">
+                                            <label> Are your sure accept this request?</label>
+                                            <div class="selection">
+                                                <button name="status" value="ACCEPTED" type="submit"
+                                                        class="btn btn-danger">Accept
+                                                </button>
+                                                <button th:data-accept=" |accept${leave.id}|" type="button"
+                                                        class="btn btn-normal"
+                                                        onclick="closeModalBox(this.getAttribute('data-accept'))">Cancel
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
 
-                                <button type="button" class="border-0">
+                                <button type="button" class="border-0" th:data-reject=" |reject${leave.id}|"
+                                        onclick="openModalBox(this.getAttribute('data-reject'))">
                                     <i class="fa fa-ban fa-2x"></i>
                                 </button>
+                                <div th:id="'reject' + ${leave.id}" class="modal-box">
+                                    <div class="modal-box-content modal-box-content-confirm">
+                                        <form class="form" th:action="@{|/employee/approve/reject/${leave.id}|}"
+                                              method="post">
+                                            <label> Are your sure reject this request?</label>
+                                            <div class="selection">
+                                                <button name="status" value="ACCEPTED" type="submit"
+                                                        class="btn btn-danger">Reject
+                                                </button>
+                                                <button th:data-reject=" |reject${leave.id}|" type="button"
+                                                        class="btn btn-normal"
+                                                        onclick="closeModalBox(this.getAttribute('data-reject'))">Cancel
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
                                 <button type="button" class="border-0">
                                     <i class="fa fa-info-circle fa-2x"></i>
                                 </button>
@@ -135,7 +178,6 @@
                     </tbody>
                 </table>
             </div>
-
             <br>
             <div class="border bg-light p-2">
                 <h5 class="text-center">&copy; Copyright by Hulk</h5>
@@ -144,9 +186,8 @@
     </div>
 </div>
 
-<!--<script src="test.js"></script>-->
-
 <script src="https://kit.fontawesome.com/f83b9ba1b1.js" crossorigin="anonymous"></script>
+<script th:src="@{/js/script.js}" type="application/javascript" rel="script"></script>
 
 </body>
 </html>

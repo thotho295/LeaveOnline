@@ -59,8 +59,13 @@ public class HRController {
 
     @PostMapping(value = "/add-employee")
     public String addEmployeeAndCreateNewAccount(@ModelAttribute AddEmployeeForm form){
-        userService.createNew(form);
-        employeeService.createNew(form);
+        try{
+            userService.createNew(form);
+            employeeService.createNew(form);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
 
         return "redirect:/hr/employees";
     }

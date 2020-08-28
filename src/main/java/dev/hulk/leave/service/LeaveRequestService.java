@@ -17,9 +17,9 @@ public interface LeaveRequestService {
 
     List<LeaveRequest> getAllPendingRequest(String email);
 
-    void approve(Integer id);
+    void approve(Integer id, String email);
 
-    void reject(Integer id);
+    void reject(Integer id, String email);
 
     List<LeaveRequest> getAllPendingRequest();
 

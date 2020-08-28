@@ -51,6 +51,7 @@
                 <table class="table">
                     <thead>
                     <tr>
+                        <th>No.</th>
                         <th>Name</th>
                         <th>Email</th>
                         <th>On Work</th>
@@ -62,6 +63,7 @@
                     <tbody>
                     <th:block th:each="employee : ${employees}">
                         <tr>
+                            <td th:text="${employees.indexOf(employee)} + 1" scope="col">1</td>
                             <td th:text="${employee.name}">Name</td>
                             <td th:text="${employee.email}">email</td>
                             <td th:text="${employee.onWork}">ON WORK</td>

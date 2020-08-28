@@ -11,6 +11,8 @@ import dev.hulk.leave.repository.RoleRepository;
 import dev.hulk.leave.repository.UserRepository;
 import dev.hulk.leave.service.LeaveRequestService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,16 +28,18 @@ public class LeaveRequestServiceImpl implements LeaveRequestService {
     private final EmployeeRepository employeeRepository;
     private final RoleRepository roleRepository;
     private final UserRepository userRepository;
+    private final JavaMailSender javaMailSender;
 
     @Autowired
     public LeaveRequestServiceImpl(LeaveRequestRepository leaveRequestRepository,
                                    EmployeeRepository employeeRepository,
                                    RoleRepository roleRepository,
-                                   UserRepository userRepository) {
+                                   UserRepository userRepository, JavaMailSender javaMailSender) {
         this.leaveRequestRepository = leaveRequestRepository;
         this.employeeRepository = employeeRepository;
         this.roleRepository = roleRepository;
         this.userRepository = userRepository;
+        this.javaMailSender = javaMailSender;
     }
 
     @Override
@@ -74,6 +78,14 @@ public class LeaveRequestServiceImpl implements LeaveRequestService {
 
         leaveRequestRepository.save(leaveRequest);
 
+        try{
+            String message = employee.getName() + "sent a new request for leave \n Check it now";
+            sendEmail(employee.getUpperLevel().getEmail(), message);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 
     @Override
@@ -96,21 +108,41 @@ public class LeaveRequestServiceImpl implements LeaveRequestService {
     }
 
     @Override
-    public void approve(Integer id) {
+    public void approve(Integer id, String email) {
         LeaveRequest leaveRequest = leaveRequestRepository.findOneById(id);
 
         leaveRequest.setStatus("Approved");
 
         leaveRequestRepository.save(leaveRequest);
+
+        Employee employee = employeeRepository.findOneByEmail(email);
+
+        try {
+            String message = "Your Leave Request have been Accepted by " + employee.getName() + "\n Check it!";
+            sendEmail(leaveRequest.getEmployee().getEmail(), message);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override
-    public void reject(Integer id) {
+    public void reject(Integer id, String email) {
         LeaveRequest leaveRequest = leaveRequestRepository.findOneById(id);
 
         leaveRequest.setStatus("Rejected");
 
         leaveRequestRepository.save(leaveRequest);
+
+        Employee employee = employeeRepository.findOneByEmail(email);
+
+        try {
+            String message = "Your Leave Request have been Rejected by " + employee.getName() + "\n Check it!";
+            sendEmail(leaveRequest.getEmployee().getEmail(), message);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -121,5 +153,16 @@ public class LeaveRequestServiceImpl implements LeaveRequestService {
     @Override
     public void deleteById(Integer requestId) {
         leaveRequestRepository.deleteById(requestId);
+    }
+
+    void sendEmail(String destination, String message){
+        SimpleMailMessage mgs = new SimpleMailMessage();
+
+        mgs.setTo(destination);
+        mgs.setSubject("Leave Request Notification");
+        mgs.setText(message);
+
+        javaMailSender.send(mgs);
+        System.out.println("Mail sent!");
     }
 }

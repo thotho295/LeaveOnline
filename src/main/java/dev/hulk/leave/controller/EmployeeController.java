@@ -70,6 +70,7 @@ public class EmployeeController {
         model.addAttribute("acceptedRequests", acceptedRequests);
         model.addAttribute("pendingRequests", pendingRequests);
         model.addAttribute("rejectedRequests", rejectedRequests);
+        model.addAttribute("currentEmployee", employeeService.getOneByEmail(email));
         model.addAttribute("addLeaveRequestForm", new AddLeaveRequestForm());
 
         return "employee/dashboard";
@@ -107,17 +108,17 @@ public class EmployeeController {
     }
 
     @PostMapping(value = "/approve/approve/{id}")
-    public String approveLeave(@PathVariable Integer id){
+    public String approveLeave(@PathVariable Integer id, Principal principal){
 
-        leaveRequestService.approve(id);
+        leaveRequestService.approve(id, principal.getName());
 
         return "redirect:/employee/approve";
     }
 
     @PostMapping(value = "/approve/reject/{id}")
-    public String rejectLeave(@PathVariable Integer id){
+    public String rejectLeave(@PathVariable Integer id, Principal principal){
 
-        leaveRequestService.reject(id);
+        leaveRequestService.reject(id, principal.getName());
 
         return "redirect:/employee/approve";
     }

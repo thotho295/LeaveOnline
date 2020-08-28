@@ -91,7 +91,13 @@
             <br>
             <br>
 
-            <div class="container-fluid">
+            <div th:if="${#authentication.name == 'boss@gmail.com'}" >
+                <br><br>
+                <h3 class="text-center">You are Boss! Not need to request! Go to Approve for your employees</h3>
+                <br><br><br><br><br><br><br><br><br><br>
+            </div>
+
+            <div th:if="${#authentication.name != 'boss@gmail.com'}" class="container-fluid">
                 <div class="row justify-content-center">
                     <div class="col-xl-3  col-md-6 mb-4">
                         <div class="card border-left border-success">
@@ -230,8 +236,10 @@
                                             <small id="reason-help" class="form-text text-muted">To be honest!</small>
                                         </div>
                                         <div class="form-group">
-                                            <label>Approver</label>
-
+                                            <label>Approver:</label>
+                                            <label class="border-success"
+                                                   th:text="${currentEmployee.upperLevel.name}"
+                                                   th:title="${currentEmployee.upperLevel.email}"></label>
                                         </div>
                                     </form>
                                 </div>
@@ -243,38 +251,47 @@
                         </div>
                     </div>
                 </div>
+                <br><br>
+                <div class="row">
+                    <div th:if="${requests.size() == 0}">
+                        <p class="text-center"><b>You have no leave requests. That's good!</b></p>
+                    </div>
+
+
+                    <div th:if="${requests.size() != 0}" class="table-responsive">
+                        <table class="table table-striped table-hover table-bordered">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">No.</th>
+                                <th scope="col">From</th>
+                                <th scope="col">To</th>
+                                <th scope="col">Reason</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Approver</th>
+                            </tr>
+
+                            </thead>
+                            <tbody class="">
+
+                            <th:block th:each="request : ${requests}">
+                                <tr>
+                                    <td th:text="${requests.indexOf(request) + 1}">1</td>
+                                    <td th:text="${request.start}">29-11-2000</td>
+                                    <td th:text="${request.end}">29-11-2020</td>
+                                    <td th:text="${request.reason}">Just for fun</td>
+                                    <td th:text="${request.status}">PENDING</td>
+                                    <td th:text="${request.approver.name}" th:title="${request.approver.email}">Hulk
+                                    </td>
+                                </tr>
+                            </th:block>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
 
-            <br>
-            <br>
 
-            <div class="table-responsive">
-                <table class="table table-striped table-hover table-bordered">
-                    <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">From</th>
-                        <th scope="col">To</th>
-                        <th scope="col">Reason</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Approver</th>
-                    </tr>
-
-                    </thead>
-                    <tbody class="">
-
-                    <th:block th:each="request : ${requests}">
-                        <tr>
-                            <td th:text="${request.start}">29-11-2000</td>
-                            <td th:text="${request.end}">29-11-2020</td>
-                            <td th:text="${request.reason}">Just for fun</td>
-                            <td th:text="${request.status}">PENDING</td>
-                            <td th:text="${request.approver.name}" th:title="${request.approver.email}">Hulk</td>
-                        </tr>
-                    </th:block>
-                    </tbody>
-                </table>
-            </div>
-            <br>
+            <br><br>
             <div class="border bg-light p-2">
                 <h5 class="text-center">&copy; Copyright by Hulk</h5>
             </div>

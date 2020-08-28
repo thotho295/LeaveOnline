@@ -1,3 +1,58 @@
 #sidebar-container{
     height: 95vh;
+}.modal-box {
+     display: none;
+     position: fixed;
+     width: 100%;
+     height: 100%;
+     overflow: auto;
+     z-index: 1;
+     left: 0;
+     top: 0;
+     background-color: rgba(0, 0, 0, 0.4);
+     /*visibility: hidden;*/
+ }
+
+.modal-box-content {
+    background-color: #80f08b;
+    margin: 5% auto;
+    padding: 20px;
+    border: none;
+    border-radius: 6px;
+    width: 80%;
+}
+
+.modal-box-content-confirm {
+    width: 30%;
+}
+
+.modal-box-content-confirm .form {
+    justify-content: center;
+}
+
+.modal-box-content-confirm .form label{
+    color: #ffffff;
+    margin: 20px;
+    display: block;
+    text-align: center;
+    font-size: 4vh;
+}
+
+.modal-box-content-confirm .form .selection{
+    display: flex;
+    justify-content: space-around;
+}
+
+.close-modal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }
