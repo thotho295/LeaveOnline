@@ -117,4 +117,9 @@ public class LeaveRequestServiceImpl implements LeaveRequestService {
     public List<LeaveRequest> getAllPendingRequest() {
         return leaveRequestRepository.findAllByStatus("Pending");
     }
+
+    @Override
+    public void deleteById(Integer requestId) {
+        leaveRequestRepository.deleteById(requestId);
+    }
 }

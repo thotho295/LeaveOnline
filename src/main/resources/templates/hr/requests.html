@@ -72,7 +72,7 @@
                                 <button th:data-delete="|delete${request.id}|" type="button" class="btn btn-danger" onclick="openModalBox(this.getAttribute('data-delete'))">Delete</button>
                                 <div th:id="|delete${request.id}|" class="modal-box">
                                     <div class="modal-box-content modal-box-content-confirm">
-                                        <form class="form" th:action="@{/templates/hr/request/delete}" method="get">
+                                        <form class="form" th:action="@{/hr/requests/delete}" method="post">
                                             <input type="hidden" th:value="${request.id}" name="request_id">
                                             <label> Are your sure delete this request?</label>
                                             <div class="selection">

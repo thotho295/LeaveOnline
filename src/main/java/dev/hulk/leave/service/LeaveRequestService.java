@@ -22,4 +22,6 @@ public interface LeaveRequestService {
     void reject(Integer id);
 
     List<LeaveRequest> getAllPendingRequest();
+
+    void deleteById(Integer requestId);
 }

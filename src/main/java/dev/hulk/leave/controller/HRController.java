@@ -50,6 +50,13 @@ public class HRController {
         return "hr/requests";
     }
 
+    @PostMapping(value = "/requests/delete")
+    public String deleteRequest(@RequestParam(name = "request_id") Integer requestId){
+        leaveRequestService.deleteById(requestId);
+
+        return "redirect:/hr/requests";
+    }
+
     @PostMapping(value = "/add-employee")
     public String addEmployeeAndCreateNewAccount(@ModelAttribute AddEmployeeForm form){
         userService.createNew(form);
