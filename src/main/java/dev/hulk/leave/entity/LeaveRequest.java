@@ -35,7 +35,7 @@ public class LeaveRequest {
     private String status;
 
     @ManyToOne
-    @JoinColumn(name = "employee_id") // an sua code
+    @JoinColumn(name = "employee_id")
     @NotNull
     private Employee employee;
 

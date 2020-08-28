@@ -1,8 +1,10 @@
 package dev.hulk.leave.service.impl;
 import dev.hulk.leave.entity.Employee;
+import dev.hulk.leave.entity.LeaveRequest;
 import dev.hulk.leave.entity.User;
 import dev.hulk.leave.form.AddEmployeeForm;
 import dev.hulk.leave.repository.EmployeeRepository;
+import dev.hulk.leave.repository.LeaveRequestRepository;
 import dev.hulk.leave.repository.UserRepository;
 import dev.hulk.leave.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +19,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     private final UserRepository userRepository;
     private final EmployeeRepository employeeRepository;
+    private final LeaveRequestRepository leaveRequestRepository;
 
     @Autowired
-    public EmployeeServiceImpl(UserRepository userRepository, EmployeeRepository employeeRepository) {
+    public EmployeeServiceImpl(UserRepository userRepository, EmployeeRepository employeeRepository, LeaveRequestRepository leaveRequestRepository) {
         this.userRepository = userRepository;
         this.employeeRepository = employeeRepository;
+        this.leaveRequestRepository = leaveRequestRepository;
     }
 
     @Override
@@ -57,6 +61,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void deleteByEmail(String email) {
+        Employee employee = employeeRepository.findOneByEmail(email);
+        List<LeaveRequest> requests = leaveRequestRepository.findAllByEmployee(employee);
+
+        for(LeaveRequest request : requests){
+            leaveRequestRepository.delete(request);
+        }
         employeeRepository.deleteByEmail(email);
     }
 }
