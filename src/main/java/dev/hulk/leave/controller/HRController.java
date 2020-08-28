@@ -25,56 +25,71 @@ public class HRController {
     }
 
     @GetMapping(value = "/dashboard")
-    public String home(Model model){
-
-        model.addAttribute("employees", employeeService.getAll());
-        model.addAttribute("pending", leaveRequestService.getAllPendingRequest());
+    public String home(Model model) {
+        try {
+            model.addAttribute("employees", employeeService.getAll());
+            model.addAttribute("pending", leaveRequestService.getAllPendingRequest());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         return "hr/dashboard";
     }
 
     @GetMapping(value = "/employees")
-    public String colleagues(Model model){
-
-        model.addAttribute("form", new AddEmployeeForm());
-        model.addAttribute("employees", employeeService.getAll());
+    public String colleagues(Model model) {
+        try {
+            model.addAttribute("form", new AddEmployeeForm());
+            model.addAttribute("employees", employeeService.getAll());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         return "hr/employees";
     }
 
     @GetMapping(value = "/requests")
-    public String requests(Model model){
-
-        model.addAttribute("requests", leaveRequestService.getAll());
+    public String requests(Model model) {
+        try {
+            model.addAttribute("requests", leaveRequestService.getAll());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         return "hr/requests";
     }
 
     @PostMapping(value = "/requests/delete")
-    public String deleteRequest(@RequestParam(name = "request_id") Integer requestId){
-        leaveRequestService.deleteById(requestId);
+    public String deleteRequest(@RequestParam(name = "request_id") Integer requestId) {
+        try {
+            leaveRequestService.deleteById(requestId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         return "redirect:/hr/requests";
     }
 
     @PostMapping(value = "/add-employee")
-    public String addEmployeeAndCreateNewAccount(@ModelAttribute AddEmployeeForm form){
-        try{
+    public String addEmployeeAndCreateNewAccount(@ModelAttribute AddEmployeeForm form) {
+        try {
             userService.createNew(form);
             employeeService.createNew(form);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         return "redirect:/hr/employees";
     }
-    
-    @PostMapping(value = "/employees/delete/{email}")
-    public String deleteEmployee(@PathVariable String email){
 
-        employeeService.deleteByEmail(email);
-        userService.deleteByEmail(email);
+    @PostMapping(value = "/employees/delete/{email}")
+    public String deleteEmployee(@PathVariable String email) {
+        try {
+            employeeService.deleteByEmail(email);
+            userService.deleteByEmail(email);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         return "redirect:/hr/employees";
     }

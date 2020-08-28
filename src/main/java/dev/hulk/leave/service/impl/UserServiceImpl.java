@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
 
         try {
-            String message = "You have new account!\nUsername: " + form.getInputEmail() + ".\nPassword: " + password + "\nGo to login!";
+            String message = "You have new account!\nUsername: " + form.getInputEmail() + "\nPassword: " + password + "\nGo to login!";
             mailService.sendEmail(form.getInputEmail(), message);
         } catch (Exception e) {
             e.printStackTrace();
